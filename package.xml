@@ -2,14 +2,14 @@
 <package format="1" xmlns="https://wiki.freecad.org/Package_Metadata">
   <name>FreeCAD Workspace Themes</name>
   <description>Professional theme collection for FreeCAD featuring Carbon Designer, Slate Professional, and Graphite Professional themes. Each theme includes carefully designed color palettes, modern styling, and optimized accessibility for CAD workflows.</description>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <date>2025-06-29</date>
-  <maintainer email="bcherrington@example.com">B. Cherrington</maintainer>
-  <license file="LICENSE">MIT</license>
+  <maintainer email="bcherrington@example.com">B Cherrington</maintainer>
+  <license file="LICENSE">GPLv3</license>
   <url type="repository" branch="main">https://github.com/bcherrington/FreeCAD-Workspace-Themes</url>
   <url type="readme">https://github.com/bcherrington/FreeCAD-Workspace-Themes/blob/main/README.md</url>
   <icon>resources/icons/workspace-themes.svg</icon>
-  <tag>theme</tag>
+  <tag>Theme</tag>
   <tag>stylesheet</tag>
   <tag>color</tag>
   <tag>professional</tag>
@@ -20,7 +20,7 @@
   <content>
     <preferencepack>
       <name>Carbon Designer</name>
-      <type>theme</type>
+      <type>Theme</type>
       <description>Professional dark theme with carbon-inspired color palette. Features balanced contrast, modern styling, and optimized colors for technical CAD work.</description>
       <version>1.0.0</version>
       <tag>dark</tag>
@@ -30,10 +30,10 @@
       <file>Carbon Designer.qss</file>
       <file>Carbon Designer Overlay.qss</file>
     </preferencepack>
-    
+
     <preferencepack>
       <name>Slate Professional</name>
-      <type>theme</type>
+      <type>Theme</type>
       <description>Expert-designed slate-based color palette with cool undertones. Professional appearance with sophisticated hierarchy and enhanced accessibility.</description>
       <version>1.0.0</version>
       <tag>slate</tag>
@@ -46,7 +46,7 @@
     
     <preferencepack>
       <name>Graphite Professional</name>
-      <type>theme</type>
+      <type>Theme</type>
       <description>Pure gray color palette without blue undertones. Neutral color temperature for technical precision with clean, professional appearance ideal for CAD work.</description>
       <version>1.0.0</version>
       <tag>graphite</tag>
