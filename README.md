@@ -114,17 +114,18 @@ FreeCAD-Workspace-Themes/
 ├── package.xml                           # Add-on metadata
 ├── Carbon Designer/
 │   ├── Carbon Designer.cfg               # Theme preferences
-│   └── Carbon Designer.qss               # Main stylesheet
+│   ├── Carbon Designer.qss               # Main stylesheet
+│   └── Carbon Designer Overlay.qss       # Overlay stylesheet
 ├── Slate Professional/
 │   ├── Slate Professional.cfg
-│   └── Slate Professional.qss
+│   ├── Slate Professional.qss
+│   └── Slate Professional Overlay.qss
 ├── Graphite Professional/
 │   ├── Graphite Professional.cfg
-│   └── Graphite Professional.qss
-└── overlay/
-    ├── Carbon Designer Overlay.qss       # Overlay stylesheets
-    ├── Slate Professional Overlay.qss
-    └── Graphite Professional Overlay.qss
+│   ├── Graphite Professional.qss
+│   └── Graphite Professional Overlay.qss
+└── scripts/
+    └── install_themes.py                 # Manual installation script
 ```
 
 ### Color Philosophy

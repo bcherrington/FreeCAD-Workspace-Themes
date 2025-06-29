@@ -2,7 +2,7 @@
 <package format="1" xmlns="https://wiki.freecad.org/Package_Metadata">
   <name>FreeCAD Workspace Themes</name>
   <description>Professional theme collection for FreeCAD featuring Carbon Designer, Slate Professional, and Graphite Professional themes. Each theme includes carefully designed color palettes, modern styling, and optimized accessibility for CAD workflows.</description>
-  <version>1.0.2</version>
+  <version>1.0.3</version>
   <date>2025-06-29</date>
   <maintainer email="bcherrington@example.com">B Cherrington</maintainer>
   <license file="LICENSE">GPLv3</license>
@@ -27,6 +27,7 @@
       <tag>carbon</tag>
       <tag>professional</tag>
       <tag>designer</tag>
+      <file>Carbon Designer.cfg</file>
       <file>Carbon Designer.qss</file>
       <file>Carbon Designer Overlay.qss</file>
     </preferencepack>
@@ -40,10 +41,11 @@
       <tag>professional</tag>
       <tag>cool</tag>
       <tag>sophisticated</tag>
+      <file>Slate Professional.cfg</file>
       <file>Slate Professional.qss</file>
       <file>Slate Professional Overlay.qss</file>
     </preferencepack>
-    
+
     <preferencepack>
       <name>Graphite Professional</name>
       <type>Theme</type>
@@ -54,6 +56,7 @@
       <tag>neutral</tag>
       <tag>precision</tag>
       <tag>recommended</tag>
+      <file>Graphite Professional.cfg</file>
       <file>Graphite Professional.qss</file>
       <file>Graphite Professional Overlay.qss</file>
     </preferencepack>

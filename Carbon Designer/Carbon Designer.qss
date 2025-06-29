@@ -383,6 +383,7 @@ QSint--ActionGroup QFrame[class="content"] QComboBox,
 QSint--ActionGroup QFrame[class="content"] QCheckBox,
 QSint--ActionGroup QFrame[class="content"] QRadioButton {
   color: white;  /* OVERRIDE: Ensure all task panel text is white for dark theme visibility */
+  background-color: transparent;  /* PRESERVED: Classic transparent background */
   /* CLASSIC_PRESERVED: Individual widget styling maintained */
 }
 

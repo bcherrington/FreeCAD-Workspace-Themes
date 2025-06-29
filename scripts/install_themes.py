@@ -46,49 +46,44 @@ def get_script_dir():
 def install_theme(theme_name, source_dir, target_dir, dry_run=False):
     """Install a single theme to the target directory."""
     theme_source = source_dir / theme_name
-    overlay_source = source_dir / 'overlay' / f'{theme_name} Overlay.qss'
-    
+
     if not theme_source.exists():
         print(f"❌ Theme '{theme_name}' not found in source directory")
         return False
-    
-    # Create target directories
+
+    # Create target directory
     target_theme_dir = target_dir / theme_name
-    target_overlay_dir = target_dir / 'overlay'
-    
+
+    # Define all theme files that should be copied
+    theme_files = [
+        f'{theme_name}.cfg',
+        f'{theme_name}.qss',
+        f'{theme_name} Overlay.qss'
+    ]
+
     if dry_run:
         print(f"📁 Would create directory: {target_theme_dir}")
-        print(f"📁 Would create directory: {target_overlay_dir}")
-        print(f"📄 Would copy: {theme_source / f'{theme_name}.cfg'} → {target_theme_dir}")
-        print(f"📄 Would copy: {theme_source / f'{theme_name}.qss'} → {target_theme_dir}")
-        if overlay_source.exists():
-            print(f"📄 Would copy: {overlay_source} → {target_overlay_dir}")
+        for file_name in theme_files:
+            source_file = theme_source / file_name
+            if source_file.exists():
+                print(f"📄 Would copy: {source_file} → {target_theme_dir}")
         return True
-    
+
     try:
-        # Create directories
+        # Create target directory
         target_theme_dir.mkdir(parents=True, exist_ok=True)
-        target_overlay_dir.mkdir(parents=True, exist_ok=True)
-        
-        # Copy theme files
-        cfg_file = theme_source / f'{theme_name}.cfg'
-        qss_file = theme_source / f'{theme_name}.qss'
-        
-        if cfg_file.exists():
-            shutil.copy2(cfg_file, target_theme_dir)
-            print(f"✅ Copied: {cfg_file.name}")
-        
-        if qss_file.exists():
-            shutil.copy2(qss_file, target_theme_dir)
-            print(f"✅ Copied: {qss_file.name}")
-        
-        # Copy overlay file
-        if overlay_source.exists():
-            shutil.copy2(overlay_source, target_overlay_dir)
-            print(f"✅ Copied: {overlay_source.name}")
-        
+
+        # Copy all theme files
+        for file_name in theme_files:
+            source_file = theme_source / file_name
+            if source_file.exists():
+                shutil.copy2(source_file, target_theme_dir)
+                print(f"✅ Copied: {file_name}")
+            else:
+                print(f"⚠️  Warning: {file_name} not found")
+
         return True
-        
+
     except Exception as e:
         print(f"❌ Error installing {theme_name}: {e}")
         return False

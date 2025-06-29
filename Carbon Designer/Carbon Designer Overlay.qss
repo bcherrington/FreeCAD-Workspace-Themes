@@ -209,14 +209,6 @@ QSint--ActionGroup QFrame[class="content"] QLineEdit {
   border: 2px solid #FFFF00 !important;  /* YELLOW border */
 }
 
-/* TEST: Task Panel Spin Boxes - BRIGHT GREEN backgrounds */
-QSint--ActionGroup QFrame[class="content"] QSpinBox,
-QSint--ActionGroup QFrame[class="content"] QDoubleSpinBox {
-  background-color: #00FF00 !important;  /* BRIGHT GREEN - Spin boxes */
-  color: #111827 !important;
-  border: 2px solid #FF00FF !important;  /* MAGENTA border */
-}
-
 /* TEST: Task Panel Combo Boxes - BRIGHT BLUE backgrounds */
 QSint--ActionGroup QFrame[class="content"] QComboBox {
   background-color: #0000FF !important;  /* BRIGHT BLUE - Dropdown boxes */
