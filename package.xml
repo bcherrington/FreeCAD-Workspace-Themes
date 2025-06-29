@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <package format="1" xmlns="https://wiki.freecad.org/Package_Metadata">
-  <n>FreeCAD Workspace Themes</n>
+  <name>FreeCAD Workspace Themes</name>
   <description>Professional theme collection for FreeCAD featuring Carbon Designer, Slate Professional, and Graphite Professional themes. Each theme includes carefully designed color palettes, modern styling, and optimized accessibility for CAD workflows.</description>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <date>2025-06-29</date>
   <maintainer email="bcherrington@example.com">B. Cherrington</maintainer>
   <license file="LICENSE">MIT</license>
@@ -19,10 +19,10 @@
 
   <content>
     <preferencepack>
-      <n>Carbon Designer</n>
+      <name>Carbon Designer</name>
+      <type>theme</type>
       <description>Professional dark theme with carbon-inspired color palette. Features balanced contrast, modern styling, and optimized colors for technical CAD work.</description>
       <version>1.0.0</version>
-      <icon>Carbon Designer/carbon-designer-icon.svg</icon>
       <tag>dark</tag>
       <tag>carbon</tag>
       <tag>professional</tag>
@@ -32,10 +32,10 @@
     </preferencepack>
     
     <preferencepack>
-      <n>Slate Professional</n>
+      <name>Slate Professional</name>
+      <type>theme</type>
       <description>Expert-designed slate-based color palette with cool undertones. Professional appearance with sophisticated hierarchy and enhanced accessibility.</description>
       <version>1.0.0</version>
-      <icon>Slate Professional/slate-professional-icon.svg</icon>
       <tag>slate</tag>
       <tag>professional</tag>
       <tag>cool</tag>
@@ -45,10 +45,10 @@
     </preferencepack>
     
     <preferencepack>
-      <n>Graphite Professional</n>
+      <name>Graphite Professional</name>
+      <type>theme</type>
       <description>Pure gray color palette without blue undertones. Neutral color temperature for technical precision with clean, professional appearance ideal for CAD work.</description>
       <version>1.0.0</version>
-      <icon>Graphite Professional/graphite-professional-icon.svg</icon>
       <tag>graphite</tag>
       <tag>professional</tag>
       <tag>neutral</tag>
