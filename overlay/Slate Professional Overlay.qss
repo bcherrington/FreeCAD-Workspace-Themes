@@ -1,0 +1,300 @@
+/*
+ * Slate Professional Overlay Theme for FreeCAD
+ * Overlay styling for light work areas (3D viewport, property editor)
+ * 
+ * This overlay theme provides light backgrounds for specific areas while
+ * maintaining the dark theme for the main interface.
+ * 
+ * Light Work Area Colors:
+ * - Pure White: #ffffff (3D viewport, property editor)
+ * - Very Light Gray: #f8f9fa (subtle backgrounds)
+ * - Light Gray: #f1f3f5 (borders, dividers)
+ * - Medium Light Gray: #e9ecef (disabled states)
+ * 
+ * Text Colors for Light Backgrounds:
+ * - Rich Dark: #0f172a (primary text on light)
+ * - Dark Slate: #475569 (secondary text on light)
+ * - Medium Slate: #64748b (muted text on light)
+ */
+
+/* =============================================================================
+   PROPERTY EDITOR - Light Theme Override
+   ============================================================================= */
+
+/* Property Editor Main Container */
+Gui--PropertyEditor--PropertyEditor {
+    background-color: #ffffff !important; /* Pure white background */
+    color: #0f172a !important; /* Rich dark text */
+    border: 1px solid #e2e8f0 !important; /* Light border */
+    selection-background-color: #0ea5e9 !important; /* Sky Blue selection */
+    selection-color: #ffffff !important;
+    alternate-background-color: #f8f9fa !important; /* Very light gray alternating */
+}
+
+/* Property Editor Items */
+Gui--PropertyEditor--PropertyEditor QTreeView::item {
+    color: #0f172a !important; /* Rich dark text */
+    background-color: transparent;
+    border-bottom: 1px solid #f1f3f5; /* Light gray separator */
+    padding: 4px;
+}
+
+Gui--PropertyEditor--PropertyEditor QTreeView::item:hover {
+    background-color: rgba(14, 165, 233, 0.1) !important; /* Light sky blue hover */
+    color: #0f172a !important;
+}
+
+Gui--PropertyEditor--PropertyEditor QTreeView::item:selected {
+    background-color: #0ea5e9 !important; /* Sky Blue selection */
+    color: #ffffff !important;
+}
+
+/* Property Editor Headers/Groups */
+Gui--PropertyEditor--PropertyEditor QTreeView::item[isPropertyGroup="true"] {
+    background-color: #f1f3f5 !important; /* Light gray for groups */
+    color: #0f172a !important;
+    font-weight: bold;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* Property Editor Input Fields */
+Gui--PropertyEditor--PropertyEditor QLineEdit {
+    background-color: #ffffff !important; /* White input background */
+    color: #0f172a !important; /* Rich dark text */
+    border: 1px solid #cbd5e1 !important; /* Light border */
+    border-radius: 3px;
+    padding: 2px 4px;
+    selection-background-color: #0ea5e9 !important;
+    selection-color: #ffffff !important;
+}
+
+Gui--PropertyEditor--PropertyEditor QLineEdit:focus {
+    border-color: #0ea5e9 !important; /* Sky Blue focus */
+    border-width: 2px;
+}
+
+/* Property Editor Spin Boxes */
+Gui--PropertyEditor--PropertyEditor QSpinBox,
+Gui--PropertyEditor--PropertyEditor QDoubleSpinBox {
+    background-color: #ffffff !important; /* White background */
+    color: #0f172a !important; /* Rich dark text */
+    border: 1px solid #cbd5e1 !important; /* Light border */
+    border-radius: 3px;
+    selection-background-color: #0ea5e9 !important;
+    selection-color: #ffffff !important;
+}
+
+Gui--PropertyEditor--PropertyEditor QSpinBox:focus,
+Gui--PropertyEditor--PropertyEditor QDoubleSpinBox:focus {
+    border-color: #0ea5e9 !important; /* Sky Blue focus */
+    border-width: 2px;
+}
+
+/* Property Editor Combo Boxes */
+Gui--PropertyEditor--PropertyEditor QComboBox {
+    background-color: #ffffff !important; /* White background */
+    color: #0f172a !important; /* Rich dark text */
+    border: 1px solid #cbd5e1 !important; /* Light border */
+    border-radius: 3px;
+    padding: 2px 4px;
+}
+
+Gui--PropertyEditor--PropertyEditor QComboBox:hover {
+    background-color: #f8f9fa !important; /* Very light gray hover */
+    border-color: #94a3b8 !important;
+}
+
+Gui--PropertyEditor--PropertyEditor QComboBox::drop-down {
+    background-color: #f1f3f5 !important; /* Light gray dropdown button */
+    border: none;
+    border-radius: 2px;
+}
+
+Gui--PropertyEditor--PropertyEditor QComboBox::down-arrow {
+    image: none;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #475569; /* Dark slate arrow */
+}
+
+/* Property Editor Checkboxes */
+Gui--PropertyEditor--PropertyEditor QCheckBox::indicator {
+    background-color: #ffffff !important; /* White checkbox background */
+    border: 1px solid #cbd5e1 !important; /* Light border */
+    border-radius: 3px;
+}
+
+Gui--PropertyEditor--PropertyEditor QCheckBox::indicator:hover {
+    background-color: #f8f9fa !important; /* Very light gray hover */
+    border-color: #94a3b8 !important;
+}
+
+Gui--PropertyEditor--PropertyEditor QCheckBox::indicator:checked {
+    background-color: #0ea5e9 !important; /* Sky Blue checked */
+    border-color: #0284c7 !important;
+}
+
+/* Property Editor Scrollbars - Light Theme */
+Gui--PropertyEditor--PropertyEditor QScrollBar:vertical {
+    background-color: rgba(71, 85, 105, 0.1) !important; /* Dark slate track for light bg */
+    width: 12px;
+    border-radius: 6px;
+    border: none;
+}
+
+Gui--PropertyEditor--PropertyEditor QScrollBar::handle:vertical {
+    background-color: rgba(71, 85, 105, 0.3) !important; /* Dark slate handle */
+    border-radius: 6px;
+    min-height: 20px;
+}
+
+Gui--PropertyEditor--PropertyEditor QScrollBar::handle:vertical:hover {
+    background-color: rgba(71, 85, 105, 0.5) !important; /* Enhanced dark slate hover */
+}
+
+/* =============================================================================
+   TASK PANELS - Overlay with Transparency
+   ============================================================================= */
+
+/* Task Panel Container */
+Gui--TaskView--TaskView {
+    background-color: rgba(30, 41, 59, 0.95) !important; /* Rich slate with transparency */
+    color: #f8fafc !important;
+    border: 1px solid rgba(100, 116, 139, 0.8) !important; /* Semi-transparent border */
+    border-radius: 6px;
+}
+
+/* Task Panel Headers */
+Gui--TaskView--TaskView QLabel[isTaskHeader="true"] {
+    background-color: rgba(15, 23, 42, 0.9) !important; /* Deep charcoal header */
+    color: #f8fafc !important;
+    padding: 6px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* Task Panel Content Areas */
+Gui--TaskView--TaskView QWidget[isTaskContent="true"] {
+    background-color: rgba(51, 65, 85, 0.9) !important; /* Medium slate content */
+    border-radius: 4px;
+    padding: 4px;
+}
+
+/* Task Panel Buttons */
+Gui--TaskView--TaskView QPushButton {
+    background-color: rgba(51, 65, 85, 0.9) !important; /* Medium slate */
+    color: #f8fafc !important;
+    border: 1px solid rgba(100, 116, 139, 0.8) !important;
+    border-radius: 4px;
+    padding: 6px 12px;
+}
+
+Gui--TaskView--TaskView QPushButton:hover {
+    background-color: rgba(71, 85, 105, 0.9) !important; /* Light slate hover */
+    border-color: rgba(148, 163, 184, 0.8) !important;
+}
+
+Gui--TaskView--TaskView QPushButton:pressed {
+    background-color: rgba(30, 41, 59, 0.9) !important; /* Rich slate pressed */
+    border-color: rgba(14, 165, 233, 0.8) !important; /* Sky blue border */
+}
+
+/* Task Panel Input Fields */
+Gui--TaskView--TaskView QLineEdit {
+    background-color: rgba(30, 41, 59, 0.9) !important; /* Rich slate */
+    color: #f8fafc !important;
+    border: 1px solid rgba(100, 116, 139, 0.8) !important;
+    border-radius: 4px;
+    padding: 4px 6px;
+    selection-background-color: #0ea5e9 !important;
+    selection-color: #ffffff !important;
+}
+
+Gui--TaskView--TaskView QLineEdit:focus {
+    border-color: rgba(14, 165, 233, 0.9) !important; /* Sky blue focus */
+    border-width: 2px;
+}
+
+/* Task Panel Scrollbars - Overlay Theme */
+Gui--TaskView--TaskView QScrollBar:vertical {
+    background-color: rgba(30, 41, 59, 0.1) !important; /* Rich slate track */
+    width: 12px;
+    border-radius: 6px;
+    border: none;
+}
+
+Gui--TaskView--TaskView QScrollBar::handle:vertical {
+    background-color: rgba(30, 41, 59, 0.4) !important; /* Rich slate handle */
+    border-radius: 6px;
+    min-height: 20px;
+}
+
+Gui--TaskView--TaskView QScrollBar::handle:vertical:hover {
+    background-color: rgba(30, 41, 59, 0.6) !important; /* Enhanced rich slate hover */
+}
+
+/* =============================================================================
+   SELECTED TABS - Light Theme Override
+   ============================================================================= */
+
+/* Selected tabs get light theme when overlaying 3D viewport */
+QTabWidget[overlayMode="true"] QTabBar::tab:selected {
+    background-color: #ffffff !important; /* White selected tab */
+    color: #0f172a !important; /* Rich dark text */
+    border-color: #e2e8f0 !important; /* Light border */
+}
+
+QTabWidget[overlayMode="true"] QTabBar::tab:selected:hover {
+    background-color: #f8f9fa !important; /* Very light gray hover */
+}
+
+/* =============================================================================
+   OVERLAY PROXY WIDGETS
+   ============================================================================= */
+
+/* Overlay effect for floating panels */
+QWidget[overlayEffect="true"] {
+    background-color: rgba(255, 255, 255, 0.78) !important; /* Semi-transparent white overlay */
+    border-radius: 6px;
+}
+
+/* Overlay hint color for proxy widgets */
+QWidget[overlayHint="true"] {
+    background-color: rgba(250, 250, 250, 0.6) !important; /* Light overlay hint */
+    border: 1px dashed rgba(14, 165, 233, 0.5) !important; /* Sky blue dashed border */
+    border-radius: 4px;
+}
+
+/* =============================================================================
+   CONTEXT MENUS IN LIGHT AREAS
+   ============================================================================= */
+
+/* Context menus appearing over light backgrounds */
+QMenu[lightContext="true"] {
+    background-color: #ffffff !important; /* White menu background */
+    color: #0f172a !important; /* Rich dark text */
+    border: 1px solid #cbd5e1 !important; /* Light border */
+    border-radius: 4px;
+    padding: 4px;
+}
+
+QMenu[lightContext="true"]::item {
+    color: #0f172a !important;
+    padding: 6px 20px;
+    border-radius: 3px;
+}
+
+QMenu[lightContext="true"]::item:selected {
+    background-color: #0ea5e9 !important; /* Sky Blue selection */
+    color: #ffffff !important;
+}
+
+QMenu[lightContext="true"]::item:disabled {
+    color: #94a3b8 !important; /* Muted text for disabled */
+}
+
+QMenu[lightContext="true"]::separator {
+    height: 1px;
+    background-color: #e2e8f0 !important; /* Light separator */
+    margin: 4px 0px;
+}

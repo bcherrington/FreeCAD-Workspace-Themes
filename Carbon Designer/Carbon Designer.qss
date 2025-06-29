@@ -1,0 +1,1232 @@
+/*
+MyCustomDark Theme - Classic Style Approach with Complete Style Documentation
+============================================================================================================
+Minimal stylesheet following FreeCAD Classic theme methodology:
+- No global resets - leverage Qt Fusion style defaults
+- Parameter-based colors via FreeCAD theme system
+- Minimal overrides only where absolutely necessary
+- Maximum compatibility with Qt native styling
+
+Based on FreeCAD Classic theme approach with custom color scheme.
+
+ANNOTATION LEGEND:
+- CLASSIC: = FreeCAD Classic theme default (commented out)
+- QT_FUSION: = Qt Fusion style default (commented out)
+- SELECTOR_SOURCE: = Where this CSS selector comes from
+- APPLIES_TO: = What GUI elements this selector targets
+- OVERRIDES: = What default styling this replaces
+
+============================================================================================================
+
+THEME COLORS (managed via FreeCAD parameters):
+  @ThemeAccentColor1 - Primary accent color (selections, highlights)
+  @ThemeAccentColor2 - Secondary accent color (focus states)
+  @ThemeAccentColor3 - Tertiary accent color (special elements)
+
+See Qt documentation:
+  - https://doc.qt.io/qt-5/stylesheet.html
+  - https://doc.qt.io/qt-5/stylesheet-reference.html
+  - https://doc.qt.io/qt-5/stylesheet-examples.html
+
+--------------------------------------------------------------------------- */
+
+/*
+CLASSIC APPROACH: Color-only stylesheet
+============================================================================================================
+Following FreeCAD Classic theme methodology with custom colors:
+- Color overrides only - no structural styling (padding, margins, borders)
+- Qt Fusion handles all spacing, sizing, and layout
+- Minimal CSS for maximum compatibility
+- Overlay stylesheet handles white background visibility
+
+This approach provides:
+- Classic spacing and sizing from Qt Fusion
+- Custom dark color scheme preserved
+- Better performance (minimal CSS parsing)
+- Maximum consistency with Qt design system
+- Easier maintenance (color-only overrides)
+============================================================================================================
+*/
+
+/* Essential color overrides only - preserve Qt Fusion spacing/sizing */
+/* Let Qt Fusion handle all structural elements (padding, margins, borders) */
+
+/*==================================================================================================
+MAIN APPLICATION CONTAINERS
+==================================================================================================*/
+
+/* SELECTOR_SOURCE: Qt framework - QMainWindow, QDialog, QDockWidget classes */
+/* APPLIES_TO: Main application window, all dialogs, and dockable panels */
+/* CLASSIC_DEFAULT: background-color: #f0f0f0; color: black; */
+/* QT_FUSION_DEFAULT: Uses system theme colors (typically light gray background) */
+QMainWindow,
+QDialog,
+QDockWidget {
+  background-color: #2a2a2a;  /* OVERRIDE: Dark gray instead of Classic light gray #f0f0f0 */
+  color: white;               /* OVERRIDE: White text instead of Classic black */
+  /* CLASSIC_REMOVED: No border styling in Classic theme */
+  /* QT_FUSION_REMOVED: No explicit border, uses native window decorations */
+}
+
+/*==================================================================================================
+TEXT AND INPUT ELEMENTS
+==================================================================================================*/
+
+/* SELECTOR_SOURCE: Qt framework - QLabel class */
+/* APPLIES_TO: All text labels throughout FreeCAD interface */
+/* CLASSIC_DEFAULT: color: black; background-color: transparent; */
+/* QT_FUSION_DEFAULT: Uses system text color (typically black) */
+QLabel {
+  color: white;  /* OVERRIDE: White text instead of Classic black */
+  /* CLASSIC_PRESERVED: background-color: transparent; (implicit) */
+  /* CLASSIC_PRESERVED: No border styling */
+}
+
+/* SELECTOR_SOURCE: Qt framework - Text input widget classes */
+/* APPLIES_TO: All text input fields, spin boxes throughout FreeCAD */
+/* CLASSIC_DEFAULT: background-color: #ffffff; color: black; border: 1px solid #ababab; */
+/* QT_FUSION_DEFAULT: White background, black text, system border */
+QLineEdit,
+QTextEdit,
+QPlainTextEdit,
+QSpinBox,
+QDoubleSpinBox {
+  background-color: #1a1a1a;  /* OVERRIDE: Dark gray instead of Classic white #ffffff */
+  color: white;               /* OVERRIDE: White text instead of Classic black */
+  /* CLASSIC_REMOVED: border: 1px solid #ababab; - UNDO: add back for input field borders */
+  /* QT_FUSION_REMOVED: Native border styling - UNDO: add back for consistent borders */
+}
+
+/* SELECTOR_SOURCE: Qt framework - Focus pseudo-states for input widgets */
+/* APPLIES_TO: Input fields when they have keyboard focus */
+/* CLASSIC_DEFAULT: border: 2px solid @ThemeAccentColor2; */
+/* QT_FUSION_DEFAULT: System focus indication (usually blue border) */
+QLineEdit:focus,
+QTextEdit:focus,
+QPlainTextEdit:focus,
+QSpinBox:focus,
+QDoubleSpinBox:focus {
+  border: 1px solid @ThemeAccentColor2;  /* PRESERVED: Classic focus border with theme color */
+  /* CLASSIC_PRESERVED: Focus border behavior maintained */
+}
+
+/*==================================================================================================
+BUTTONS
+==================================================================================================*/
+
+/* SELECTOR_SOURCE: Qt framework - QPushButton class */
+/* APPLIES_TO: All push buttons throughout FreeCAD interface */
+/* CLASSIC_DEFAULT: background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #fdfdfd, stop:1 #f0f0f0); */
+/*               color: black; border: 1px solid #ababab; border-radius: 3px; padding: 4px; min-width: 80px; */
+/* QT_FUSION_DEFAULT: System button styling with gradients and native borders */
+QPushButton {
+  background-color: #3a3a3a;  /* OVERRIDE: Solid dark gray instead of Classic light gradient */
+  color: white;               /* OVERRIDE: White text instead of Classic black */
+  /* CLASSIC_REMOVED: border: 1px solid #ababab; - UNDO: add back for button borders */
+  /* CLASSIC_REMOVED: border-radius: 3px; - UNDO: add back for rounded corners */
+  /* CLASSIC_REMOVED: padding: 4px; - UNDO: add back for button spacing */
+  /* CLASSIC_REMOVED: min-width: 80px; - UNDO: add back for minimum button width */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QPushButton:hover pseudo-state */
+/* APPLIES_TO: Push buttons when mouse hovers over them */
+/* CLASSIC_DEFAULT: background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #ffffff, stop:1 #fefefe); */
+/* QT_FUSION_DEFAULT: Slightly lighter system button color on hover */
+QPushButton:hover {
+  background-color: #555555;  /* OVERRIDE: Lighter dark gray instead of Classic light gradient */
+  /* CLASSIC_PRESERVED: Hover effect concept maintained */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QPushButton:pressed pseudo-state */
+/* APPLIES_TO: Push buttons when being clicked/pressed */
+/* CLASSIC_DEFAULT: border: 1px solid @ThemeAccentColor1; */
+/* QT_FUSION_DEFAULT: Pressed appearance with system accent color */
+QPushButton:pressed {
+  border: 1px solid @ThemeAccentColor1;  /* PRESERVED: Classic pressed border with theme color */
+  /* CLASSIC_PRESERVED: Pressed state indication maintained */
+}
+
+/*==================================================================================================
+TOOLBARS AND MENUS
+==================================================================================================*/
+
+/* SELECTOR_SOURCE: Qt framework - QToolBar class */
+/* APPLIES_TO: All toolbars in FreeCAD interface */
+/* CLASSIC_DEFAULT: background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #cecece, stop:0.03 #f4f4f4, stop:0.97 #f0f0f0, stop:1 #cecece); */
+/* QT_FUSION_DEFAULT: System toolbar styling with gradients */
+QToolBar {
+  background-color: #1a1a1a;  /* OVERRIDE: Solid dark gray instead of Classic light gradient */
+  color: white;               /* OVERRIDE: White text instead of Classic black */
+  /* CLASSIC_REMOVED: Complex gradient background - UNDO: add back for Classic appearance */
+  /* CLASSIC_REMOVED: padding-top: 3px; padding-left: 3px; - UNDO: add back for toolbar spacing */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QMenuBar class */
+/* APPLIES_TO: Main menu bar at top of FreeCAD window */
+/* CLASSIC_DEFAULT: background-color: #ffffff; color: black; selection-background-color: @ThemeAccentColor1; */
+/* QT_FUSION_DEFAULT: System menu bar styling */
+QMenuBar {
+  background-color: #1a1a1a;  /* OVERRIDE: Dark gray instead of Classic white #ffffff */
+  color: white;               /* OVERRIDE: White text instead of Classic black */
+  /* CLASSIC_REMOVED: selection-background-color: @ThemeAccentColor1; - UNDO: add back for menu selection */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QMenu class */
+/* APPLIES_TO: All dropdown menus and context menus */
+/* CLASSIC_DEFAULT: background-color: #f0f0f0; color: black; border: 1px solid #ababab; margin: 0px; */
+/*               selection-background-color: @ThemeAccentColor1; */
+/* QT_FUSION_DEFAULT: System menu styling with borders and shadows */
+QMenu {
+  background-color: #1a1a1a;  /* OVERRIDE: Dark gray instead of Classic light gray #f0f0f0 */
+  color: white;               /* OVERRIDE: White text instead of Classic black */
+  /* CLASSIC_REMOVED: border: 1px solid #ababab; - UNDO: add back for menu borders */
+  /* CLASSIC_REMOVED: margin: 0px; - UNDO: add back for menu positioning */
+  /* CLASSIC_REMOVED: selection-background-color: @ThemeAccentColor1; - UNDO: add back for selection */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QMenu::item:selected pseudo-element */
+/* APPLIES_TO: Selected/highlighted menu items */
+/* CLASSIC_DEFAULT: background-color: @ThemeAccentColor1; color: black; */
+/* QT_FUSION_DEFAULT: System selection color for menu items */
+QMenu::item:selected {
+  background-color: @ThemeAccentColor1;  /* PRESERVED: Classic selection color with theme accent */
+  /* CLASSIC_PRESERVED: Selection behavior maintained */
+}
+
+/*==================================================================================================
+TREE VIEWS AND LISTS
+==================================================================================================*/
+
+/* SELECTOR_SOURCE: Qt framework - QTreeView, QListView, QTableView classes */
+/* APPLIES_TO: Tree panel (model tree), property editor, file lists, table views */
+/* CLASSIC_DEFAULT: background-color: #f0f0f0; color: black; gridline-color: #ababab; */
+/*               border-radius: 0px; selection-background-color: @ThemeAccentColor1; */
+/* QT_FUSION_DEFAULT: System list/tree styling with alternating row colors */
+QTreeView,
+QListView,
+QTableView {
+  background-color: #1a1a1a;        /* OVERRIDE: Dark gray instead of Classic light gray #f0f0f0 */
+  color: white;                     /* OVERRIDE: White text instead of Classic black */
+  alternate-background-color: #2a2a2a;  /* OVERRIDE: Darker alternating rows instead of Classic light */
+  /* CLASSIC_REMOVED: gridline-color: #ababab; - UNDO: add back for table grid lines */
+  /* CLASSIC_REMOVED: border-radius: 0px; - UNDO: add back for consistent borders */
+  /* CLASSIC_REMOVED: selection-background-color: @ThemeAccentColor1; - UNDO: add back for selection */
+}
+
+/* SELECTOR_SOURCE: Qt framework - Item selection pseudo-states for views */
+/* APPLIES_TO: Selected items in tree views, lists, and tables */
+/* CLASSIC_DEFAULT: background-color: @ThemeAccentColor1; color: black; */
+/* QT_FUSION_DEFAULT: System selection color for list items */
+QTreeView::item:selected,
+QListView::item:selected,
+QTableView::item:selected {
+  background-color: @ThemeAccentColor1;  /* PRESERVED: Classic selection color with theme accent */
+  /* CLASSIC_PRESERVED: Selection behavior maintained */
+  /* CLASSIC_MISSING: color: black; - UNDO: add back for proper text contrast on selection */
+}
+
+/*==================================================================================================
+COMBO BOXES
+==================================================================================================*/
+
+/* SELECTOR_SOURCE: Qt framework - QComboBox class */
+/* APPLIES_TO: All dropdown combo boxes throughout FreeCAD interface */
+/* CLASSIC_DEFAULT: background-color: #ffffff; color: black; border: 1px solid #ababab; */
+/*               border-radius: 2px; padding: 2px; */
+/* QT_FUSION_DEFAULT: System combo box styling with dropdown arrow */
+QComboBox {
+  background-color: #3a3a3a;  /* OVERRIDE: Dark gray instead of Classic white #ffffff */
+  color: white;               /* OVERRIDE: White text instead of Classic black */
+  /* CLASSIC_REMOVED: border: 1px solid #ababab; - UNDO: add back for combo box borders */
+  /* CLASSIC_REMOVED: border-radius: 2px; - UNDO: add back for rounded corners */
+  /* CLASSIC_REMOVED: padding: 2px; - UNDO: add back for internal spacing */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QComboBox dropdown list view */
+/* APPLIES_TO: Dropdown list that appears when combo box is opened */
+/* CLASSIC_DEFAULT: background-color: #ffffff; border: 1px solid #ababab; border-radius: 2px; */
+/*               selection-background-color: @ThemeAccentColor1; */
+/* QT_FUSION_DEFAULT: System dropdown list styling */
+QComboBox QAbstractItemView {
+  background-color: #1a1a1a;                    /* OVERRIDE: Dark gray instead of Classic white */
+  selection-background-color: @ThemeAccentColor1;  /* PRESERVED: Classic selection color */
+  /* CLASSIC_REMOVED: border: 1px solid #ababab; - UNDO: add back for dropdown borders */
+  /* CLASSIC_REMOVED: border-radius: 2px; - UNDO: add back for rounded dropdown */
+}
+
+/*==================================================================================================
+CHECKBOXES AND RADIO BUTTONS
+==================================================================================================*/
+
+/* SELECTOR_SOURCE: Qt framework - QCheckBox class */
+/* APPLIES_TO: All checkboxes throughout FreeCAD interface */
+/* CLASSIC_DEFAULT: color: black; padding: 1px; outline: none; border: 1px solid transparent; */
+/*               background-color: transparent; spacing: 8px; */
+/* QT_FUSION_DEFAULT: System checkbox styling with native indicators */
+QCheckBox {
+  color: white;  /* OVERRIDE: White text instead of Classic black */
+  /* CLASSIC_REMOVED: padding: 1px; - UNDO: add back for checkbox spacing */
+  /* CLASSIC_REMOVED: outline: none; - UNDO: add back to remove focus outline */
+  /* CLASSIC_REMOVED: border: 1px solid transparent; - UNDO: add back for focus border */
+  /* CLASSIC_REMOVED: background-color: transparent; - UNDO: add back for transparent background */
+  /* CLASSIC_REMOVED: spacing: 8px; - UNDO: add back for text spacing from indicator */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QCheckBox::indicator pseudo-element */
+/* APPLIES_TO: The actual checkbox square/indicator part */
+/* CLASSIC_DEFAULT: background-color: #f0f0f0; width: 12px; height: 12px; border: 1px solid #1c1c1c; */
+/* QT_FUSION_DEFAULT: System checkbox indicator styling */
+QCheckBox::indicator {
+  background-color: #1a1a1a;  /* OVERRIDE: Dark gray instead of Classic light gray #f0f0f0 */
+  /* CLASSIC_REMOVED: width: 12px; height: 12px; - UNDO: add back for consistent checkbox size */
+  /* CLASSIC_REMOVED: border: 1px solid #1c1c1c; - UNDO: add back for checkbox borders */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QCheckBox::indicator:checked pseudo-element */
+/* APPLIES_TO: Checkbox indicator when checked */
+/* CLASSIC_DEFAULT: image: url(qss:images_classic/check-mark-black.png); border: 1px solid #1c1c1c; */
+/*               background-color: #fdfdfd; */
+/* QT_FUSION_DEFAULT: System checkmark styling */
+QCheckBox::indicator:checked {
+  image: url(qss:images_classic/check-mark-white.png);  /* OVERRIDE: White checkmark instead of Classic black */
+  /* CLASSIC_REMOVED: border: 1px solid #1c1c1c; - UNDO: add back for checked border */
+  /* CLASSIC_REMOVED: background-color: #fdfdfd; - UNDO: add back for checked background */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QRadioButton class */
+/* APPLIES_TO: All radio buttons throughout FreeCAD interface */
+/* CLASSIC_DEFAULT: background-color: transparent; color: black; border: none; spacing: 8px; outline: none; */
+/* QT_FUSION_DEFAULT: System radio button styling */
+QRadioButton {
+  color: white;  /* OVERRIDE: White text instead of Classic black */
+  /* CLASSIC_REMOVED: background-color: transparent; - UNDO: add back for transparent background */
+  /* CLASSIC_REMOVED: border: none; - UNDO: add back to remove borders */
+  /* CLASSIC_REMOVED: spacing: 8px; - UNDO: add back for text spacing from indicator */
+  /* CLASSIC_REMOVED: outline: none; - UNDO: add back to remove focus outline */
+}
+
+/*==================================================================================================
+GROUP BOXES
+==================================================================================================*/
+
+/* SELECTOR_SOURCE: Qt framework - QGroupBox class */
+/* APPLIES_TO: All group boxes (containers with titles) throughout FreeCAD interface */
+/* CLASSIC_DEFAULT: background-color: #ededed; border: 1px solid #d8d8d8; border-radius: 2px; */
+/*               margin-top: 18px; color: black; */
+/* QT_FUSION_DEFAULT: System group box styling with title positioning */
+QGroupBox {
+  background-color: #3c3c3c;  /* OVERRIDE: Dark gray instead of Classic light gray #ededed */
+  color: white;               /* OVERRIDE: White text instead of Classic black */
+  /* CLASSIC_REMOVED: border: 1px solid #d8d8d8; - UNDO: add back for group box borders */
+  /* CLASSIC_REMOVED: border-radius: 2px; - UNDO: add back for rounded corners */
+  /* CLASSIC_REMOVED: margin-top: 18px; - UNDO: add back for title space */
+}
+
+/*==================================================================================================
+STATUS BAR
+==================================================================================================*/
+
+/* SELECTOR_SOURCE: Qt framework - QStatusBar class */
+/* APPLIES_TO: Status bar at bottom of FreeCAD main window */
+/* CLASSIC_DEFAULT: border: 0px solid #ededed; background-color: #f0f0f0; */
+/* QT_FUSION_DEFAULT: System status bar styling */
+QStatusBar {
+  background-color: #1a1a1a;  /* OVERRIDE: Dark gray instead of Classic light gray #f0f0f0 */
+  color: white;               /* OVERRIDE: White text instead of Classic black */
+  /* CLASSIC_REMOVED: border: 0px solid #ededed; - UNDO: add back for status bar borders */
+}
+
+/*==================================================================================================
+TOOLTIPS
+==================================================================================================*/
+
+/* SELECTOR_SOURCE: Qt framework - QToolTip class */
+/* APPLIES_TO: All tooltip popups throughout FreeCAD interface */
+/* CLASSIC_DEFAULT: background-color: #FFFFE1; color: black; border: none; font-weight: bolder; */
+/*               border-top-width: 1px; border-left-width: 1px; border-right-width: 1.5px; */
+/*               border-bottom-width: 1.5px; border-style: solid; border-color: #e6e6e6; padding: 0px; */
+/* QT_FUSION_DEFAULT: System tooltip styling with light yellow background */
+QToolTip {
+  background-color: #FFFFE1;  /* PRESERVED: Classic light yellow tooltip background */
+  color: black;               /* PRESERVED: Classic black text for readability on yellow */
+  /* CLASSIC_REMOVED: border styling - UNDO: add back for tooltip borders */
+  /* CLASSIC_REMOVED: font-weight: bolder; - UNDO: add back for bold tooltip text */
+  /* CLASSIC_REMOVED: padding: 0px; - UNDO: add back for tooltip spacing */
+}
+
+/*==================================================================================================
+TASK PANEL STYLING - COMPREHENSIVE
+==================================================================================================*/
+
+/* SELECTOR_SOURCE: QSint library - ActionGroup content frames */
+/* APPLIES_TO: Task panel content areas - main content sections of task panels */
+/* UI_FILE_SOURCE: TaskView/*.ui files use QSint::ActionGroup widgets */
+/* CLASSIC_DEFAULT: color: black; background-color: transparent; */
+/* QT_FUSION_DEFAULT: System text color on transparent background */
+QSint--ActionGroup QFrame[class="content"] {
+  color: white;  /* OVERRIDE: White text instead of Classic black for dark theme visibility */
+  /* CLASSIC_PRESERVED: background-color: transparent; (implicit) */
+}
+
+/* SELECTOR_SOURCE: QSint library - All input widgets within task panel content */
+/* APPLIES_TO: All text elements within task panel content areas */
+/* UI_FILE_SOURCE: TaskView/*.ui files contain various input widgets in content frames */
+/* CLASSIC_DEFAULT: color: black; (inherited from parent elements) */
+/* QT_FUSION_DEFAULT: System text colors for input widgets */
+QSint--ActionGroup QFrame[class="content"] QLabel,
+QSint--ActionGroup QFrame[class="content"] QLineEdit,
+QSint--ActionGroup QFrame[class="content"] QTextEdit,
+QSint--ActionGroup QFrame[class="content"] QPlainTextEdit,
+QSint--ActionGroup QFrame[class="content"] QSpinBox,
+QSint--ActionGroup QFrame[class="content"] QDoubleSpinBox,
+QSint--ActionGroup QFrame[class="content"] QComboBox,
+QSint--ActionGroup QFrame[class="content"] QCheckBox,
+QSint--ActionGroup QFrame[class="content"] QRadioButton {
+  color: white;  /* OVERRIDE: Ensure all task panel text is white for dark theme visibility */
+  /* CLASSIC_PRESERVED: Individual widget styling maintained */
+}
+
+/* SELECTOR_SOURCE: QSint library - Universal selector for task panel content */
+/* APPLIES_TO: All widgets within task panel content - catch any missed elements */
+/* CLASSIC_DEFAULT: color: black; (inherited) */
+/* QT_FUSION_DEFAULT: System colors for all widgets */
+QSint--ActionGroup QFrame[class="content"] * {
+  color: white;  /* COMPREHENSIVE: Ensure ALL task panel content text is white */
+  /* NOTE: Universal selector - use with caution, may override specific styling */
+}
+
+/* SELECTOR_SOURCE: QSint library - ActionGroup base widget */
+/* APPLIES_TO: Task panel action groups themselves (container widgets) */
+/* UI_FILE_SOURCE: TaskView/*.ui files define ActionGroup containers */
+/* CLASSIC_DEFAULT: color: black; background-color: transparent; */
+/* QT_FUSION_DEFAULT: System widget colors */
+QSint--ActionGroup {
+  color: white;  /* OVERRIDE: White text instead of Classic black for task panel base */
+  /* CLASSIC_PRESERVED: background-color: transparent; (implicit) */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QGroupBox within QSint ActionGroups */
+/* APPLIES_TO: Task panel group boxes and their titles */
+/* UI_FILE_SOURCE: TaskView/*.ui files contain QGroupBox widgets within ActionGroups */
+/* CLASSIC_DEFAULT: color: black; background-color: #ededed; border: 1px solid #d8d8d8; */
+/* QT_FUSION_DEFAULT: System group box styling */
+QSint--ActionGroup QGroupBox,
+QSint--ActionGroup QGroupBox::title {
+  color: white;  /* OVERRIDE: White text instead of Classic black for group boxes in task panels */
+  /* CLASSIC_PRESERVED: Group box structure and borders maintained by parent QGroupBox rules */
+}
+
+/* SELECTOR_SOURCE: QSint library - ActionGroup header frames */
+/* APPLIES_TO: Task panel section headers - 'Helper Tools', 'Boolean Tools', etc. */
+/* UI_FILE_SOURCE: QSint ActionGroup widgets have header frames for section titles */
+/* CLASSIC_DEFAULT: color: black; background-color: transparent; */
+/* QT_FUSION_DEFAULT: System header styling */
+QSint--ActionGroup QFrame[class="header"] {
+  color: white;  /* OVERRIDE: White text instead of Classic black for task panel section headers */
+  /* CLASSIC_PRESERVED: Header frame structure maintained */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QToolButton with header class in ActionGroups */
+/* APPLIES_TO: Text buttons in task panel headers (expandable section buttons) */
+/* UI_FILE_SOURCE: TaskView/*.ui files may contain QToolButton widgets in headers */
+/* CLASSIC_DEFAULT: color: black; text-align: left; font-weight: normal; border: 1px solid #adadad; */
+/*               margin: 0px; padding: 1px; */
+/* QT_FUSION_DEFAULT: System tool button styling */
+QSint--ActionGroup QToolButton[class="header"] {
+  color: white;        /* OVERRIDE: White text instead of Classic black */
+  text-align: left;    /* PRESERVED: Left-aligned text for header buttons */
+  font-weight: bold;   /* OVERRIDE: Bold text instead of Classic normal weight */
+  border: none;        /* OVERRIDE: No border instead of Classic border */
+  margin: 0px;         /* PRESERVED: Classic margin */
+  padding: 0px;        /* OVERRIDE: No padding instead of Classic 1px */
+}
+
+/* SELECTOR_SOURCE: QSint library - ActionGroup header hover state */
+/* APPLIES_TO: Task panel header hover state */
+/* CLASSIC_DEFAULT: color: black; (no hover color change) */
+/* QT_FUSION_DEFAULT: System hover colors */
+QSint--ActionGroup QFrame[class="header"]:hover {
+  color: white;  /* OVERRIDE: Keep white text on hover instead of Classic black */
+  /* CLASSIC_PRESERVED: Hover behavior concept maintained */
+}
+
+/*==================================================================================================
+NOTIFICATION STYLING
+==================================================================================================*/
+
+/* SELECTOR_SOURCE: FreeCAD custom widget - Gui::NotificationLabel */
+/* APPLIES_TO: Pop-up notification messages with yellow backgrounds */
+/* UI_FILE_SOURCE: Created programmatically in notification system */
+/* CLASSIC_DEFAULT: background-color: #ffffff; border: 1px solid #ababab; border-radius: 2px; */
+/* QT_FUSION_DEFAULT: System notification styling */
+Gui--NotificationLabel {
+  background-color: #FFFFE1;  /* OVERRIDE: Yellow background instead of Classic white #ffffff */
+  color: #111827;             /* PRESERVED: Black text for visibility on yellow background */
+  border: 1px solid #d1d5db;  /* OVERRIDE: Light gray border instead of Classic #ababab */
+  border-radius: 4px;         /* OVERRIDE: Larger radius instead of Classic 2px */
+  padding: 8px;               /* OVERRIDE: More padding instead of Classic minimal */
+  /* CLASSIC_PRESERVED: Border and radius concept maintained */
+}
+
+/*==================================================================================================
+PROPERTY EDITOR STYLING
+==================================================================================================*/
+
+/* SELECTOR_SOURCE: FreeCAD custom widget - Gui::PropertyEditor::PropertyEditor */
+/* APPLIES_TO: Property editor panel showing object properties (right panel typically) */
+/* UI_FILE_SOURCE: Created programmatically in PropertyView.cpp */
+/* CLASSIC_DEFAULT: qproperty-groupTextColor: black; qproperty-groupBackground: gray; */
+/*               alternate-background-color: #f0f0f0; */
+/* QT_FUSION_DEFAULT: System tree view styling with alternating rows */
+Gui--PropertyEditor--PropertyEditor {
+  qproperty-groupTextColor: white;    /* OVERRIDE: White text instead of Classic black */
+  qproperty-groupBackground: #222222; /* OVERRIDE: Dark gray instead of Classic gray */
+  alternate-background-color: #2A2A2A; /* OVERRIDE: Dark alternating rows instead of Classic #f0f0f0 */
+  /* CLASSIC_PRESERVED: qproperty system for custom styling maintained */
+  /* CLASSIC_PRESERVED: Alternating row concept maintained */
+}
+
+/*==================================================================================================
+TAB STYLING - ACTIVE TABS WHITE, INACTIVE TABS DARK
+==================================================================================================*/
+
+/* SELECTOR_SOURCE: Qt framework - QTabWidget::tab-bar pseudo-element */
+/* APPLIES_TO: Tab bar container alignment within tab widgets */
+/* CLASSIC_DEFAULT: alignment: center; */
+/* QT_FUSION_DEFAULT: System tab bar alignment */
+QTabWidget::tab-bar {
+  alignment: left;  /* OVERRIDE: Left-aligned instead of Classic center alignment */
+  /* CLASSIC_PRESERVED: Tab bar structure maintained */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QTabBar::tab pseudo-element */
+/* APPLIES_TO: Individual tab buttons in tab bars throughout FreeCAD */
+/* CLASSIC_DEFAULT: background-color: qlineargradient(...); color: black; border: 1px solid #ababab; */
+/*               border-top-left-radius: 4px; border-top-right-radius: 4px; padding: 4px 8px; */
+/* QT_FUSION_DEFAULT: System tab styling with gradients and rounded corners */
+QTabBar::tab {
+  background-color: #3a3a3a;  /* OVERRIDE: Dark gray instead of Classic light gradient */
+  color: #d1d5db;             /* OVERRIDE: Light gray text instead of Classic black */
+  /* STRUCTURAL_PRESERVED: Essential for tab functionality */
+  border: 1px solid #020202;  /* OVERRIDE: Dark border instead of Classic #ababab */
+  border-top: none;           /* PRESERVED: Classic top border removal for tab appearance */
+  padding: 4px 8px;           /* PRESERVED: Classic padding for tab spacing */
+  margin-right: 2px;          /* PRESERVED: Classic margin for tab separation */
+  /* CLASSIC_REMOVED: border-top-left-radius: 4px; border-top-right-radius: 4px; - Rounded corners */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QTabBar::tab:selected pseudo-element */
+/* APPLIES_TO: Currently active/selected tab in tab bars */
+/* CLASSIC_DEFAULT: background-color: #ffffff; color: black; border: 1px solid #ababab; */
+/*               border-bottom: none; */
+/* QT_FUSION_DEFAULT: System selected tab styling */
+QTabBar::tab:selected {
+  background-color: #ffffff;  /* PRESERVED: Classic white background for selected tab */
+  color: #111827;             /* PRESERVED: Classic black text for selected tab */
+  /* STRUCTURAL_PRESERVED: Essential for tab functionality */
+  border: 1px solid #666666;  /* OVERRIDE: Darker border instead of Classic #ababab */
+  border-top: none;           /* PRESERVED: Classic top border removal */
+  /* CLASSIC_REMOVED: border-bottom: none; - Bottom border connection to content */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QTabBar::tab:hover:!selected pseudo-element */
+/* APPLIES_TO: Inactive tabs when mouse hovers over them */
+/* CLASSIC_DEFAULT: background-color: qlineargradient(...); (slightly lighter gradient) */
+/* QT_FUSION_DEFAULT: System tab hover styling */
+QTabBar::tab:hover:!selected {
+  background-color: #888888;  /* OVERRIDE: Medium gray instead of Classic light gradient */
+  color: #ffffff;             /* OVERRIDE: White text instead of Classic black */
+  /* CLASSIC_PRESERVED: Hover effect concept maintained */
+}
+
+/*==================================================================================================
+MODERN SCROLLBAR STYLING - OVERLAY DESIGN WITHOUT BORDER-RADIUS
+==================================================================================================*/
+
+/* SELECTOR_SOURCE: Qt framework - QScrollBar:horizontal pseudo-element */
+/* APPLIES_TO: All horizontal scrollbars throughout FreeCAD interface */
+/* CLASSIC_DEFAULT: background: #f0f0f0; height: 16px; border: 1px solid #ababab; */
+/* QT_FUSION_DEFAULT: System horizontal scrollbar with arrows and groove */
+QScrollBar:horizontal {
+  height: 8px;                                  /* OVERRIDE: Thinner instead of Classic 16px */
+  background-color: rgba(255, 255, 255, 0.05);  /* OVERRIDE: Semi-transparent instead of Classic #f0f0f0 */
+  border: none;                                 /* OVERRIDE: No border instead of Classic 1px solid #ababab */
+  margin: 0px;                                  /* OVERRIDE: No margin instead of Classic spacing */
+  /* CLASSIC_REMOVED: Arrow buttons and groove styling - Modern overlay design */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QScrollBar:vertical pseudo-element */
+/* APPLIES_TO: All vertical scrollbars throughout FreeCAD interface */
+/* CLASSIC_DEFAULT: background: #f0f0f0; width: 16px; border: 1px solid #ababab; */
+/* QT_FUSION_DEFAULT: System vertical scrollbar with arrows and groove */
+QScrollBar:vertical {
+  width: 8px;                                   /* OVERRIDE: Thinner instead of Classic 16px */
+  background-color: rgba(255, 255, 255, 0.05);  /* OVERRIDE: Semi-transparent instead of Classic #f0f0f0 */
+  border: none;                                 /* OVERRIDE: No border instead of Classic 1px solid #ababab */
+  margin: 0px;                                  /* OVERRIDE: No margin instead of Classic spacing */
+  /* CLASSIC_REMOVED: Arrow buttons and groove styling - Modern overlay design */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QScrollBar::handle:horizontal pseudo-element */
+/* APPLIES_TO: Draggable handle part of horizontal scrollbars */
+/* CLASSIC_DEFAULT: background: qlineargradient(...); border: 1px solid #ababab; min-width: 20px; */
+/* QT_FUSION_DEFAULT: System horizontal handle with gradients */
+QScrollBar::handle:horizontal {
+  background-color: rgba(255, 255, 255, 0.3);  /* OVERRIDE: Semi-transparent white instead of Classic gradient */
+  border: none;                                /* OVERRIDE: No border instead of Classic 1px solid #ababab */
+  min-width: 20px;                             /* PRESERVED: Classic minimum handle width */
+  margin: 0px;                                 /* OVERRIDE: No margin instead of Classic spacing */
+  /* CLASSIC_REMOVED: Complex gradient background - Simple semi-transparent design */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QScrollBar::handle:horizontal:hover pseudo-element */
+/* APPLIES_TO: Horizontal scrollbar handle when mouse hovers over it */
+/* CLASSIC_DEFAULT: background: qlineargradient(...); (slightly different gradient) */
+/* QT_FUSION_DEFAULT: System horizontal hover styling */
+QScrollBar::handle:horizontal:hover {
+  background-color: rgba(255, 255, 255, 0.5);  /* OVERRIDE: More opaque on hover instead of Classic gradient */
+  /* CLASSIC_PRESERVED: Hover effect concept maintained */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QScrollBar::handle:horizontal:focus pseudo-element */
+/* APPLIES_TO: Horizontal scrollbar handle when it has keyboard focus */
+/* CLASSIC_DEFAULT: border: 2px solid @ThemeAccentColor1; */
+/* QT_FUSION_DEFAULT: System focus indication */
+QScrollBar::handle:horizontal:focus {
+  background-color: @ThemeAccentColor1;  /* OVERRIDE: Accent color background instead of Classic border */
+  border: none;                          /* OVERRIDE: No border instead of Classic focus border */
+  /* CLASSIC_PRESERVED: Theme accent color usage maintained */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QScrollBar::handle:vertical pseudo-element */
+/* APPLIES_TO: Draggable handle part of vertical scrollbars */
+/* CLASSIC_DEFAULT: background: qlineargradient(...); border: 1px solid #ababab; min-height: 20px; */
+/* QT_FUSION_DEFAULT: System vertical handle with gradients */
+QScrollBar::handle:vertical {
+  background-color: rgba(255, 255, 255, 0.3);  /* OVERRIDE: Semi-transparent white instead of Classic gradient */
+  border: none;                                /* OVERRIDE: No border instead of Classic 1px solid #ababab */
+  min-height: 20px;                            /* PRESERVED: Classic minimum handle height */
+  margin: 0px;                                 /* OVERRIDE: No margin instead of Classic spacing */
+  /* CLASSIC_REMOVED: Complex gradient background - Simple semi-transparent design */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QScrollBar::handle:vertical:hover pseudo-element */
+/* APPLIES_TO: Vertical scrollbar handle when mouse hovers over it */
+/* CLASSIC_DEFAULT: background: qlineargradient(...); (slightly different gradient) */
+/* QT_FUSION_DEFAULT: System vertical hover styling */
+QScrollBar::handle:vertical:hover {
+  background-color: rgba(255, 255, 255, 0.5);  /* OVERRIDE: More opaque on hover instead of Classic gradient */
+  /* CLASSIC_PRESERVED: Hover effect concept maintained */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QScrollBar::handle:vertical:focus pseudo-element */
+/* APPLIES_TO: Vertical scrollbar handle when it has keyboard focus */
+/* CLASSIC_DEFAULT: border: 2px solid @ThemeAccentColor1; */
+/* QT_FUSION_DEFAULT: System focus indication */
+QScrollBar::handle:vertical:focus {
+  background-color: @ThemeAccentColor1;  /* OVERRIDE: Accent color background instead of Classic border */
+  border: none;                          /* OVERRIDE: No border instead of Classic focus border */
+  /* CLASSIC_PRESERVED: Theme accent color usage maintained */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QScrollBar arrow button pseudo-elements */
+/* APPLIES_TO: Arrow buttons at ends of scrollbars (removed for modern design) */
+/* CLASSIC_DEFAULT: width: 16px; height: 16px; border: 1px solid #ababab; background: gradient; */
+/* QT_FUSION_DEFAULT: System arrow button styling */
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal,
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+  width: 0px;       /* OVERRIDE: Hidden instead of Classic 16px */
+  height: 0px;      /* OVERRIDE: Hidden instead of Classic 16px */
+  border: none;     /* OVERRIDE: No border instead of Classic 1px solid #ababab */
+  background: none; /* OVERRIDE: No background instead of Classic gradient */
+  /* CLASSIC_REMOVED: Arrow button functionality - Modern overlay design */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QScrollBar arrow icon pseudo-elements */
+/* APPLIES_TO: Arrow icons within scrollbar buttons (removed for modern design) */
+/* CLASSIC_DEFAULT: width: 8px; height: 8px; background: arrow icon; */
+/* QT_FUSION_DEFAULT: System arrow icons */
+QScrollBar::up-arrow:horizontal,
+QScrollBar::down-arrow:horizontal,
+QScrollBar::up-arrow:vertical,
+QScrollBar::down-arrow:vertical {
+  width: 0px;       /* OVERRIDE: Hidden instead of Classic 8px */
+  height: 0px;      /* OVERRIDE: Hidden instead of Classic 8px */
+  background: none; /* OVERRIDE: No icon instead of Classic arrow graphics */
+  /* CLASSIC_REMOVED: Arrow icon graphics - Modern minimalist design */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QScrollBar page area pseudo-elements */
+/* APPLIES_TO: Areas above/below handle (page up/down click areas) */
+/* CLASSIC_DEFAULT: background: #f0f0f0; */
+/* QT_FUSION_DEFAULT: System page area styling */
+QScrollBar::add-page:horizontal,
+QScrollBar::sub-page:horizontal,
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+  background: transparent; /* OVERRIDE: Transparent instead of Classic light gray #f0f0f0 */
+  /* CLASSIC_REMOVED: Page area background - Modern transparent design */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QScrollBar::handle pressed pseudo-elements */
+/* APPLIES_TO: Scrollbar handle when being actively dragged */
+/* CLASSIC_DEFAULT: background: qlineargradient(...); border: 1px solid @ThemeAccentColor1; */
+/* QT_FUSION_DEFAULT: System pressed handle styling */
+QScrollBar::handle:horizontal:pressed,
+QScrollBar::handle:vertical:pressed {
+  background-color: @ThemeAccentColor1; /* OVERRIDE: Accent color instead of Classic gradient */
+  /* CLASSIC_PRESERVED: Theme accent color usage maintained */
+  /* CLASSIC_REMOVED: border: 1px solid @ThemeAccentColor1; - Borderless design */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QScrollBar disabled pseudo-elements */
+/* APPLIES_TO: Scrollbars when disabled (content doesn't scroll) */
+/* CLASSIC_DEFAULT: background: #e0e0e0; */
+/* QT_FUSION_DEFAULT: System disabled scrollbar styling */
+QScrollBar:horizontal:disabled,
+QScrollBar:vertical:disabled {
+  background-color: rgba(255, 255, 255, 0.02); /* OVERRIDE: Very subtle instead of Classic gray #e0e0e0 */
+  /* CLASSIC_PRESERVED: Disabled state concept maintained */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QScrollBar::handle disabled pseudo-elements */
+/* APPLIES_TO: Scrollbar handles when disabled */
+/* CLASSIC_DEFAULT: background: #c0c0c0; */
+/* QT_FUSION_DEFAULT: System disabled handle styling */
+QScrollBar::handle:horizontal:disabled,
+QScrollBar::handle:vertical:disabled {
+  background-color: rgba(255, 255, 255, 0.1); /* OVERRIDE: Dimmed instead of Classic gray #c0c0c0 */
+  /* CLASSIC_PRESERVED: Disabled handle concept maintained */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QScrollBar::corner pseudo-element */
+/* APPLIES_TO: Corner where horizontal and vertical scrollbars meet */
+/* CLASSIC_DEFAULT: background: #f0f0f0; border: 1px solid #ababab; */
+/* QT_FUSION_DEFAULT: System corner styling */
+QScrollBar::corner {
+  background-color: rgba(255, 255, 255, 0.05); /* OVERRIDE: Semi-transparent instead of Classic #f0f0f0 */
+  border: none;                                 /* OVERRIDE: No border instead of Classic 1px solid #ababab */
+  /* CLASSIC_REMOVED: Border styling - Modern borderless design */
+}
+
+/*==================================================================================================
+Start Page Styling - CONFIRMED WORKING SELECTORS
+==================================================================================================*/
+
+/*--------------------------------------------------------------------------------------------------
+MAIN PAGE STRUCTURE (CONFIRMED WORKING)
+--------------------------------------------------------------------------------------------------*/
+
+/* ✅ CONFIRMED: Main page surround/background - outermost white container */
+QStackedWidget > QWidget {
+  background-color: #ffffff !important;  /* WHITE - main page surround */
+  color: #111827 !important;             /* BLACK text in white surround */
+}
+
+/*--------------------------------------------------------------------------------------------------
+FOOTER AREA (CONFIRMED WORKING)
+--------------------------------------------------------------------------------------------------*/
+
+/* ✅ CONFIRMED: Footer buttons - "Open First Start" button and similar */
+/* SCOPE: Only affects buttons in Start tab footer, not other FreeCAD buttons */
+QStackedWidget > QWidget QPushButton {
+  background-color: #F5F5F5 !important;  /* LIGHT GRAY - start tab footer buttons only */
+  color: #111827 !important;             /* BLACK text */
+  /* REMOVED STRUCTURAL: border: 1px solid #d1d5db !important; - UNDO: add back for light border */
+  /* REMOVED STRUCTURAL: border-radius: 4px; - UNDO: add back for rounded corners */
+  /* REMOVED STRUCTURAL: padding: 6px 12px; - UNDO: add back for button spacing */
+}
+
+QStackedWidget > QWidget QPushButton:hover {
+  background-color: #E0E0E0 !important;  /* DARKER GRAY on hover */
+  /* REMOVED STRUCTURAL: border-color: #999999 !important; - UNDO: add back for hover border */
+}
+
+/* ✅ CONFIRMED: Footer checkbox - "Don't show this start page again" */
+/* SCOPE: Only affects checkbox in Start tab footer */
+QStackedWidget > QWidget QCheckBox {
+  background-color: transparent !important;  /* TRANSPARENT background */
+  color: #111827 !important;                 /* BLACK text */
+  border: none !important;                   /* NO BORDER around checkbox */
+}
+
+QStackedWidget > QWidget QCheckBox::indicator {
+  background-color: #ffffff !important;      /* WHITE checkbox background when unchecked */
+  /* REMOVED STRUCTURAL: border: 1px solid #d1d5db !important; - UNDO: add back for checkbox border */
+  /* REMOVED STRUCTURAL: border-radius: 2px; - UNDO: add back for rounded checkbox */
+  /* REMOVED STRUCTURAL: width: 16px; height: 16px; - UNDO: add back for fixed checkbox size */
+}
+
+QStackedWidget > QWidget QCheckBox::indicator:checked {
+  background-color: #111827 !important;      /* BLACK when checked */
+  /* REMOVED STRUCTURAL: border: 1px solid #111827 !important; - UNDO: add back for checked border */
+}
+
+QStackedWidget > QWidget QCheckBox::indicator:hover {
+  /* REMOVED STRUCTURAL: border-color: #666666 !important; - UNDO: add back for hover border */
+}
+
+/*--------------------------------------------------------------------------------------------------
+NEW FILE SECTION (CONFIRMED WORKING)
+--------------------------------------------------------------------------------------------------*/
+
+/* TARGETED TESTING: Now we know the structure, let's target specific areas */
+
+/* REMOVE GLOBAL STYLES - too broad */
+
+/* REFINED TEST: Focus on what we know works */
+
+/* REMOVE container styling for now - it's affecting the wrong element */
+
+/* WORKING: Buttons - make them visible with proper colors */
+QStackedWidget > QWidget QScrollArea QPushButton {
+  background-color: #3a3a3a !important;  /* MEDIUM GRAY - visible against dark background */
+  color: #ffffff !important;             /* WHITE text */
+  border: 1px solid #555555 !important;  /* SUBTLE border to define button edges */
+}
+
+/* WORKING: Button hover - lighter color */
+QStackedWidget > QWidget QScrollArea QPushButton:hover {
+  background-color: #4a4a4a !important;  /* LIGHTER GRAY on hover */
+  color: #ffffff !important;             /* WHITE text */
+  border: 1px solid #666666 !important;  /* SLIGHTLY LIGHTER border on hover */
+}
+
+/* FIXED: Make label backgrounds transparent so button background shows through */
+QStackedWidget > QWidget QScrollArea QPushButton QLabel {
+  background-color: transparent !important;  /* TRANSPARENT - let button background show */
+  color: #ffffff !important;             /* WHITE text */
+  border: none !important;               /* NO border */
+}
+
+/* FIXED: Keep labels transparent on hover - button background will show through */
+QStackedWidget > QWidget QScrollArea QPushButton:hover QLabel {
+  background-color: transparent !important;  /* TRANSPARENT - let button hover background show */
+  color: #ffffff !important;             /* WHITE text */
+  border: none !important;               /* NO border on hover */
+}
+
+/* ADDITIONAL: Force hover styling with even more specificity */
+QStackedWidget > QWidget QWidget QPushButton:hover {
+  background-color: #3c3c3c !important;  /* FORCE lighter gray on hover */
+  color: #ffffff !important;             /* WHITE text */
+  border: none !important;               /* NO border */
+}
+
+QStackedWidget > QWidget QWidget QPushButton:hover QLabel {
+  background-color: #3c3c3c !important;  /* FORCE label hover match */
+  color: #ffffff !important;             /* WHITE text */
+  border: none !important;               /* NO border */
+}
+
+/* KEEP OTHER BUTTONS NORMAL - restore other button styling */
+/* Don't affect Recent Files/Examples buttons */
+QListView QPushButton,
+QScrollArea QPushButton {
+  background-color: #3a3a3a !important;  /* NORMAL button color */
+  color: white !important;               /* WHITE text */
+  border: 1px solid #020202 !important;  /* NORMAL border */
+}
+
+/*==================================================================================================
+SUMMARY OF START PAGE STRUCTURE (CONFIRMED THROUGH TESTING)
+==================================================================================================*/
+
+/*
+HIERARCHY CONFIRMED:
+1. QStackedWidget > QWidget                    = Main white surround/background
+2. QStackedWidget > QWidget QScrollArea        = Dark scroll area containing content
+3. #CreateNewRow                               = New File buttons container (dark)
+4. #newFileButton                              = Individual New File buttons (dark)
+5. QStackedWidget > QWidget QScrollArea QLabel = Section labels ("New File", "Recent Files", etc.)
+6. QStackedWidget > QWidget QScrollArea QListView = List containers (Recent Files, Examples)
+7. QStackedWidget > QWidget QListView::item    = Individual file cards/thumbnails
+8. QStackedWidget > QWidget QPushButton        = Footer buttons ("Open First Start")
+9. QStackedWidget > QWidget QCheckBox          = Footer checkbox ("Don't show this page")
+
+SCOPE LIMITATIONS:
+- All selectors are scoped to Start tab only via QStackedWidget > QWidget
+- Other FreeCAD buttons/elements maintain their dark theme styling
+- Only Start tab footer buttons are light; other buttons remain dark
+*/
+
+/*--------------------------------------------------------------------------------------------------
+SECTION LABELS (CONFIRMED WORKING)
+--------------------------------------------------------------------------------------------------*/
+
+/* ✅ CONFIRMED: Section labels in scroll area - "New File", "Recent Files", "Examples" headers */
+/* LOCATION: Text labels that appear above each content section */
+QStackedWidget > QWidget QScrollArea QLabel {
+  background-color: transparent !important;  /* TRANSPARENT - no background */
+  color: #ffffff !important;                 /* WHITE text for dark scroll area */
+  /* REMOVED STRUCTURAL: border: none !important; - UNDO: add back to remove label borders */
+  /* REMOVED STRUCTURAL: padding: 5px; - UNDO: add back for label spacing */
+  font-weight: bold;
+}
+
+/* ✅ CONFIRMED: Alternative section label targeting - more specific hierarchy */
+/* BACKUP: Alternative selector for section labels if above doesn't catch all */
+QStackedWidget > QWidget > QVBoxLayout > QScrollArea > QWidget > QVBoxLayout > QLabel {
+  background-color: transparent !important;  /* TRANSPARENT - no background */
+  color: #ffffff !important;                 /* WHITE text */
+  /* REMOVED STRUCTURAL: border: none !important; - UNDO: add back to remove label borders */
+  font-weight: bold;
+  /* REMOVED STRUCTURAL: padding: 8px 0px; - UNDO: add back for label spacing */
+}
+
+/* Light buttons ONLY on Start tab - other buttons keep dark style */
+QStackedWidget > QWidget QPushButton {
+  background-color: #F5F5F5 !important;  /* LIGHT GRAY - start tab buttons only */
+  color: #111827 !important;             /* BLACK text */
+  border: 1px solid #d1d5db !important;  /* LIGHT GRAY border */
+  border-radius: 4px;
+  padding: 6px 12px;
+}
+
+QStackedWidget > QWidget QPushButton:hover {
+  background-color: #E0E0E0 !important;  /* DARKER GRAY on hover */
+  border-color: #999999 !important;      /* DARKER border on hover */
+}
+
+/* Checkbox styled for white background - NO RED BORDER */
+QStackedWidget > QWidget QCheckBox {
+  background-color: transparent !important;  /* TRANSPARENT background */
+  color: #111827 !important;                 /* BLACK text */
+  border: none !important;                   /* NO BORDER around checkbox */
+}
+
+QStackedWidget > QWidget QCheckBox::indicator {
+  background-color: #ffffff !important;      /* WHITE checkbox background when unchecked */
+  border: 1px solid #d1d5db !important;      /* LIGHT GRAY border - visible when unchecked */
+  border-radius: 2px;
+  width: 16px;
+  height: 16px;
+}
+
+QStackedWidget > QWidget QCheckBox::indicator:checked {
+  background-color: #111827 !important;      /* BLACK when checked */
+  border: 1px solid #111827 !important;      /* BLACK border when checked */
+}
+
+QStackedWidget > QWidget QCheckBox::indicator:hover {
+  border-color: #666666 !important;          /* DARKER border on hover */
+}
+
+/*--------------------------------------------------------------------------------------------------
+MAIN CONTENT SCROLL AREA (CONFIRMED WORKING)
+--------------------------------------------------------------------------------------------------*/
+
+/* ✅ CONFIRMED: Main scroll area - contains Recent Files, Examples sections */
+/* LOCATION: Central scrollable area with dark background containing content sections */
+QStackedWidget > QWidget QScrollArea {
+  background-color: #2b2b2b !important;      /* DARK GRAY - scroll area background */
+  /* REMOVED STRUCTURAL: border: 1px solid #2b2b2b !important; - UNDO: add back for scroll area border */
+  border-top: 2px solid #2b2b2b !important;
+  border-bottom: 2px solid #2b2b2b !important;
+  /* REMOVED STRUCTURAL: border-radius: 4px; - UNDO: add back for rounded scroll area */
+}
+
+/* ✅ CONFIRMED: Scroll area content widget - direct child of scroll area */
+QStackedWidget > QWidget QScrollArea > QWidget {
+  background-color: #2b2b2b !important;      /* DARK GRAY - scroll content background */
+}
+
+/* ✅ CONFIRMED: All widgets within scroll area - ensures consistent dark background */
+QStackedWidget > QWidget QScrollArea QWidget {
+  background-color: #2b2b2b !important;      /* DARK GRAY - all widgets in scroll area */
+}
+
+/*--------------------------------------------------------------------------------------------------
+RECENT FILES & EXAMPLES SECTIONS (CONFIRMED WORKING)
+--------------------------------------------------------------------------------------------------*/
+
+/* ✅ CONFIRMED: Recent Files and Examples list containers - dark boxes containing file thumbnails */
+/* LOCATION: Rectangular containers below section labels showing file previews */
+QStackedWidget > QWidget QScrollArea QListView {
+  background-color: #0a0a0a !important;  /* DARKER GRAY - list container background */
+  /* REMOVED STRUCTURAL: border: 1px solid #3a3a3a !important; - UNDO: add back for list container border */
+  /* REMOVED STRUCTURAL: border-radius: 4px; - UNDO: add back for rounded list containers */
+  /* REMOVED STRUCTURAL: padding: 8px; - UNDO: add back for list container spacing */
+}
+
+/* ✅ CONFIRMED: Alternative list view targeting - backup selector for list containers */
+/* BACKUP: More specific hierarchy targeting for list containers */
+QStackedWidget > QWidget > QVBoxLayout > QScrollArea > QWidget > QVBoxLayout > QListView {
+  background-color: #0a0a0a !important;  /* DARKER GRAY - list container background */
+  /* REMOVED STRUCTURAL: border: 1px solid #3a3a3a !important; - UNDO: add back for list container border */
+  /* REMOVED STRUCTURAL: border-radius: 4px; - UNDO: add back for rounded list containers */
+  /* REMOVED STRUCTURAL: padding: 8px; - UNDO: add back for list container spacing */
+}
+
+/* ✅ CONFIRMED: FileCardView class targeting - specific class for file card lists */
+/* SCOPE: Targets FileCardView widgets specifically (Recent Files, Examples, Custom Folder) */
+FileCardView {
+  background-color: #0a0a0a !important;  /* DARKER GRAY - FileCardView background */
+  /* REMOVED STRUCTURAL: border: 1px solid #3a3a3a !important; - UNDO: add back for FileCardView border */
+  /* REMOVED STRUCTURAL: border-radius: 4px; - UNDO: add back for rounded FileCardView */
+  /* REMOVED STRUCTURAL: padding: 8px; - UNDO: add back for FileCardView spacing */
+}
+
+/*--------------------------------------------------------------------------------------------------
+INDIVIDUAL FILE CARDS (CONFIRMED WORKING)
+--------------------------------------------------------------------------------------------------*/
+
+/* ✅ CONFIRMED: Individual file cards - thumbnail items within Recent Files/Examples lists */
+/* LOCATION: Individual file preview items with thumbnails and filenames */
+QStackedWidget > QWidget QListView::item {
+  background-color: #2b2b2b !important;  /* DARK GRAY - file card background */
+  /* REMOVED STRUCTURAL: border: 1px solid #555555 !important; - UNDO: add back for file card border */
+  /* REMOVED STRUCTURAL: border-radius: 4px; - UNDO: add back for rounded file cards */
+  /* REMOVED STRUCTURAL: margin: 2px; - UNDO: add back for file card spacing */
+  /* REMOVED STRUCTURAL: padding: 4px; - UNDO: add back for file card internal spacing */
+  color: #ffffff !important;             /* WHITE text */
+}
+
+/* ✅ CONFIRMED: File card hover state - when mouse hovers over file thumbnail */
+QStackedWidget > QWidget QListView::item:hover {
+  background-color: #3c3c3c !important;  /* LIGHTER GRAY - card hover */
+  /* REMOVED STRUCTURAL: border-color: #666666 !important; - UNDO: add back for hover border */
+}
+
+/* ✅ CONFIRMED: File card selected state - when file thumbnail is clicked/selected */
+QStackedWidget > QWidget QListView::item:selected {
+  background-color: #4a4a4a !important;  /* EVEN LIGHTER GRAY - card selected */
+  /* REMOVED STRUCTURAL: border-color: #777777 !important; - UNDO: add back for selected border */
+}
+
+/*==================================================================================================
+MISSING IMPORTANT SELECTORS - COMPREHENSIVE ADDITIONS
+==================================================================================================*/
+
+/*--------------------------------------------------------------------------------------------------
+FREECAD CUSTOM WIDGETS - CORE GUI COMPONENTS
+--------------------------------------------------------------------------------------------------*/
+
+/* SELECTOR_SOURCE: FreeCAD custom widget - Gui::TreePanel */
+/* APPLIES_TO: Main model tree panel (left panel typically) */
+/* UI_FILE_SOURCE: Created programmatically in Tree.cpp */
+/* CLASSIC_DEFAULT: background-color: #f0f0f0; color: black; */
+Gui--TreePanel {
+  background-color: #1a1a1a; /* OVERRIDE: Dark gray instead of Classic light gray */
+  color: white;               /* OVERRIDE: White text instead of Classic black */
+  /* CLASSIC_PRESERVED: Tree panel structure maintained */
+}
+
+/* SELECTOR_SOURCE: FreeCAD custom widget - Gui::OverlayTabWidget */
+/* APPLIES_TO: Overlay panel tab widget (task panel area) */
+/* UI_FILE_SOURCE: Created programmatically in overlay system */
+/* CLASSIC_DEFAULT: background-color: transparent; */
+Gui--OverlayTabWidget {
+  background-color: transparent; /* PRESERVED: Classic transparent background */
+  /* CLASSIC_PRESERVED: Overlay transparency maintained */
+}
+
+/* SELECTOR_SOURCE: FreeCAD custom widget - Gui::View3DInventorViewer */
+/* APPLIES_TO: Main 3D viewport area */
+/* UI_FILE_SOURCE: View3DInventorViewer.ui and programmatic creation */
+/* CLASSIC_DEFAULT: background-color: #f0f0f0; */
+Gui--View3DInventorViewer {
+  background-color: #2a2a2a; /* OVERRIDE: Dark gray instead of Classic light gray */
+  /* CLASSIC_PRESERVED: 3D viewer structure maintained */
+}
+
+/*--------------------------------------------------------------------------------------------------
+PREFERENCE DIALOG WIDGETS
+--------------------------------------------------------------------------------------------------*/
+
+/* SELECTOR_SOURCE: FreeCAD custom widget - Gui::PrefCheckBox */
+/* APPLIES_TO: Preference dialog checkboxes */
+/* UI_FILE_SOURCE: Various DlgSettings*.ui files */
+/* CLASSIC_DEFAULT: color: black; background-color: transparent; */
+Gui--PrefCheckBox {
+  color: white;                      /* OVERRIDE: White text instead of Classic black */
+  background-color: transparent;     /* PRESERVED: Classic transparent background */
+}
+
+/* SELECTOR_SOURCE: FreeCAD custom widget - Gui::PrefComboBox */
+/* APPLIES_TO: Preference dialog combo boxes */
+/* UI_FILE_SOURCE: Various DlgSettings*.ui files */
+/* CLASSIC_DEFAULT: background-color: #ffffff; color: black; border: 1px solid #ababab; */
+Gui--PrefComboBox {
+  background-color: #3a3a3a;  /* OVERRIDE: Dark gray instead of Classic white */
+  color: white;               /* OVERRIDE: White text instead of Classic black */
+  border: 1px solid #666666;  /* OVERRIDE: Dark border instead of Classic #ababab */
+}
+
+/* SELECTOR_SOURCE: FreeCAD custom widget - Gui::PrefLineEdit */
+/* APPLIES_TO: Preference dialog line edit fields */
+/* UI_FILE_SOURCE: Various DlgSettings*.ui files */
+/* CLASSIC_DEFAULT: background-color: #ffffff; color: black; border: 1px solid #ababab; */
+Gui--PrefLineEdit {
+  background-color: #1a1a1a;  /* OVERRIDE: Dark gray instead of Classic white */
+  color: white;               /* OVERRIDE: White text instead of Classic black */
+  border: 1px solid #666666;  /* OVERRIDE: Dark border instead of Classic #ababab */
+}
+
+/* SELECTOR_SOURCE: FreeCAD custom widget - Gui::PrefSpinBox */
+/* APPLIES_TO: Preference dialog spin boxes */
+/* UI_FILE_SOURCE: Various DlgSettings*.ui files */
+/* CLASSIC_DEFAULT: background-color: #ffffff; color: black; border: 1px solid #ababab; */
+Gui--PrefSpinBox {
+  background-color: #1a1a1a;  /* OVERRIDE: Dark gray instead of Classic white */
+  color: white;               /* OVERRIDE: White text instead of Classic black */
+  border: 1px solid #666666;  /* OVERRIDE: Dark border instead of Classic #ababab */
+}
+
+/*--------------------------------------------------------------------------------------------------
+IMPORTANT OBJECT NAME SELECTORS - THEME SYSTEM
+--------------------------------------------------------------------------------------------------*/
+
+/* SELECTOR_SOURCE: Object name from .ui files - StyleSheets */
+/* APPLIES_TO: Widget with objectName="StyleSheets" (theme selection) */
+/* UI_FILE_SOURCE: DlgSettingsUI.ui */
+/* CLASSIC_DEFAULT: Standard widget styling */
+QWidget[objectName="StyleSheets"] {
+  background-color: #2a2a2a; /* OVERRIDE: Dark gray for theme selection widget */
+  color: white;               /* OVERRIDE: White text for visibility */
+}
+
+/* SELECTOR_SOURCE: Object name from .ui files - OverlayStyleSheets */
+/* APPLIES_TO: Widget with objectName="OverlayStyleSheets" (overlay theme selection) */
+/* UI_FILE_SOURCE: DlgSettingsUI.ui */
+/* CLASSIC_DEFAULT: Standard widget styling */
+QWidget[objectName="OverlayStyleSheets"] {
+  background-color: #2a2a2a; /* OVERRIDE: Dark gray for overlay theme selection widget */
+  color: white;               /* OVERRIDE: White text for visibility */
+}
+
+/* SELECTOR_SOURCE: Object name from .ui files - ThemeAccentColor1 */
+/* APPLIES_TO: Widget with objectName="ThemeAccentColor1" (primary accent color picker) */
+/* UI_FILE_SOURCE: DlgSettingsUI.ui */
+/* CLASSIC_DEFAULT: Standard color button styling */
+QWidget[objectName="ThemeAccentColor1"] {
+  border: 2px solid #666666; /* OVERRIDE: Dark border for accent color picker */
+}
+
+/* SELECTOR_SOURCE: Object name from .ui files - ThemeAccentColor2 */
+/* APPLIES_TO: Widget with objectName="ThemeAccentColor2" (secondary accent color picker) */
+/* UI_FILE_SOURCE: DlgSettingsUI.ui */
+/* CLASSIC_DEFAULT: Standard color button styling */
+QWidget[objectName="ThemeAccentColor2"] {
+  border: 2px solid #666666; /* OVERRIDE: Dark border for accent color picker */
+}
+
+/* SELECTOR_SOURCE: Object name from .ui files - ThemeAccentColor3 */
+/* APPLIES_TO: Widget with objectName="ThemeAccentColor3" (tertiary accent color picker) */
+/* UI_FILE_SOURCE: DlgSettingsUI.ui */
+/* CLASSIC_DEFAULT: Standard color button styling */
+QWidget[objectName="ThemeAccentColor3"] {
+  border: 2px solid #666666; /* OVERRIDE: Dark border for accent color picker */
+}
+
+/*--------------------------------------------------------------------------------------------------
+DIALOG WIDGETS - MAJOR DIALOGS
+--------------------------------------------------------------------------------------------------*/
+
+/* SELECTOR_SOURCE: FreeCAD custom widget - Gui::Dialog::DlgPreferences */
+/* APPLIES_TO: Main preferences dialog */
+/* UI_FILE_SOURCE: DlgPreferences.ui */
+/* CLASSIC_DEFAULT: background-color: #f0f0f0; color: black; */
+Gui--Dialog--DlgPreferences {
+  background-color: #2a2a2a; /* OVERRIDE: Dark gray instead of Classic light gray */
+  color: white;               /* OVERRIDE: White text instead of Classic black */
+}
+
+/* SELECTOR_SOURCE: FreeCAD custom widget - Gui::Dialog::DlgMacroExecute */
+/* APPLIES_TO: Macro execute dialog */
+/* UI_FILE_SOURCE: DlgMacroExecute.ui */
+/* CLASSIC_DEFAULT: background-color: #f0f0f0; color: black; */
+Gui--Dialog--DlgMacroExecute {
+  background-color: #2a2a2a; /* OVERRIDE: Dark gray instead of Classic light gray */
+  color: white;               /* OVERRIDE: White text instead of Classic black */
+}
+
+/* SELECTOR_SOURCE: FreeCAD custom widget - Gui::Dialog::DlgCustomToolbars */
+/* APPLIES_TO: Customize toolbars dialog */
+/* UI_FILE_SOURCE: DlgCustomToolbars.ui */
+/* CLASSIC_DEFAULT: background-color: #f0f0f0; color: black; */
+Gui--Dialog--DlgCustomToolbars {
+  background-color: #2a2a2a; /* OVERRIDE: Dark gray instead of Classic light gray */
+  color: white;               /* OVERRIDE: White text instead of Classic black */
+}
+
+/*--------------------------------------------------------------------------------------------------
+TASK VIEW WIDGETS
+--------------------------------------------------------------------------------------------------*/
+
+/* SELECTOR_SOURCE: FreeCAD custom widget - Gui::TaskView::TaskAppearance */
+/* APPLIES_TO: Task panel appearance settings */
+/* UI_FILE_SOURCE: TaskView/TaskAppearance.ui */
+/* CLASSIC_DEFAULT: background-color: transparent; color: black; */
+Gui--TaskView--TaskAppearance {
+  background-color: transparent; /* PRESERVED: Classic transparent background */
+  color: white;                  /* OVERRIDE: White text instead of Classic black */
+}
+
+/* SELECTOR_SOURCE: FreeCAD custom widget - Gui::TaskView::TaskSelectLinkProperty */
+/* APPLIES_TO: Task panel link property selection */
+/* UI_FILE_SOURCE: TaskView/TaskSelectLinkProperty.ui */
+/* CLASSIC_DEFAULT: background-color: transparent; color: black; */
+Gui--TaskView--TaskSelectLinkProperty {
+  background-color: transparent; /* PRESERVED: Classic transparent background */
+  color: white;                  /* OVERRIDE: White text instead of Classic black */
+}
+
+/*--------------------------------------------------------------------------------------------------
+ADDITIONAL STANDARD QT WIDGETS - COMMONLY MISSED
+--------------------------------------------------------------------------------------------------*/
+
+/* SELECTOR_SOURCE: Qt framework - QProgressBar class */
+/* APPLIES_TO: Progress bars throughout FreeCAD interface */
+/* CLASSIC_DEFAULT: background-color: #f0f0f0; color: black; border: 1px solid #ababab; */
+/* QT_FUSION_DEFAULT: System progress bar styling */
+QProgressBar {
+  background-color: #1a1a1a;  /* OVERRIDE: Dark gray instead of Classic light gray */
+  color: white;               /* OVERRIDE: White text instead of Classic black */
+  border: 1px solid #666666;  /* OVERRIDE: Dark border instead of Classic #ababab */
+  text-align: center;         /* PRESERVED: Classic center-aligned text */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QProgressBar::chunk pseudo-element */
+/* APPLIES_TO: Progress bar fill/chunk area */
+/* CLASSIC_DEFAULT: background-color: @ThemeAccentColor1; */
+/* QT_FUSION_DEFAULT: System progress chunk styling */
+QProgressBar::chunk {
+  background-color: @ThemeAccentColor1; /* PRESERVED: Classic theme accent color */
+  /* CLASSIC_PRESERVED: Theme color system maintained */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QSlider class */
+/* APPLIES_TO: Slider controls throughout FreeCAD interface */
+/* CLASSIC_DEFAULT: background-color: transparent; */
+/* QT_FUSION_DEFAULT: System slider styling */
+QSlider {
+  background-color: transparent; /* PRESERVED: Classic transparent background */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QSlider::groove pseudo-element */
+/* APPLIES_TO: Slider track/groove area */
+/* CLASSIC_DEFAULT: background-color: #f0f0f0; border: 1px solid #ababab; */
+/* QT_FUSION_DEFAULT: System slider groove styling */
+QSlider::groove:horizontal {
+  background-color: #1a1a1a;  /* OVERRIDE: Dark gray instead of Classic light gray */
+  border: 1px solid #666666;  /* OVERRIDE: Dark border instead of Classic #ababab */
+  height: 4px;                /* PRESERVED: Classic groove height */
+}
+
+/* SELECTOR_SOURCE: Qt framework - QSlider::handle pseudo-element */
+/* APPLIES_TO: Slider handle/thumb */
+/* CLASSIC_DEFAULT: background-color: qlineargradient(...); border: 1px solid #ababab; */
+/* QT_FUSION_DEFAULT: System slider handle styling */
+QSlider::handle:horizontal {
+  background-color: #666666;  /* OVERRIDE: Medium gray instead of Classic gradient */
+  border: 1px solid #888888;  /* OVERRIDE: Light gray border instead of Classic #ababab */
+  width: 12px;                /* PRESERVED: Classic handle width */
+  margin: -4px 0;             /* PRESERVED: Classic handle positioning */
+}
+
+/*==================================================================================================
+END OF MISSING IMPORTANT SELECTORS
+==================================================================================================*/

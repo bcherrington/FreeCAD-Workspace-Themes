@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<package format="1" xmlns="https://wiki.freecad.org/Package_Metadata">
+  <n>FreeCAD Workspace Themes</n>
+  <description>Professional theme collection for FreeCAD featuring Carbon Designer, Slate Professional, and Graphite Professional themes. Each theme includes carefully designed color palettes, modern styling, and optimized accessibility for CAD workflows.</description>
+  <version>1.0.0</version>
+  <date>2025-06-29</date>
+  <maintainer email="bcherrington@example.com">B. Cherrington</maintainer>
+  <license file="LICENSE">MIT</license>
+  <url type="repository" branch="main">https://github.com/bcherrington/FreeCAD-Workspace-Themes</url>
+  <url type="readme">https://github.com/bcherrington/FreeCAD-Workspace-Themes/blob/main/README.md</url>
+  <icon>resources/icons/workspace-themes.svg</icon>
+  <tag>theme</tag>
+  <tag>stylesheet</tag>
+  <tag>color</tag>
+  <tag>professional</tag>
+  <tag>dark</tag>
+  <tag>workspace</tag>
+  <freecadmin>0.20.0</freecadmin>
+
+  <content>
+    <preferencepack>
+      <n>Carbon Designer</n>
+      <description>Professional dark theme with carbon-inspired color palette. Features balanced contrast, modern styling, and optimized colors for technical CAD work.</description>
+      <version>1.0.0</version>
+      <icon>Carbon Designer/carbon-designer-icon.svg</icon>
+      <tag>dark</tag>
+      <tag>carbon</tag>
+      <tag>professional</tag>
+      <tag>designer</tag>
+      <file>Carbon Designer.qss</file>
+      <file>Carbon Designer Overlay.qss</file>
+    </preferencepack>
+    
+    <preferencepack>
+      <n>Slate Professional</n>
+      <description>Expert-designed slate-based color palette with cool undertones. Professional appearance with sophisticated hierarchy and enhanced accessibility.</description>
+      <version>1.0.0</version>
+      <icon>Slate Professional/slate-professional-icon.svg</icon>
+      <tag>slate</tag>
+      <tag>professional</tag>
+      <tag>cool</tag>
+      <tag>sophisticated</tag>
+      <file>Slate Professional.qss</file>
+      <file>Slate Professional Overlay.qss</file>
+    </preferencepack>
+    
+    <preferencepack>
+      <n>Graphite Professional</n>
+      <description>Pure gray color palette without blue undertones. Neutral color temperature for technical precision with clean, professional appearance ideal for CAD work.</description>
+      <version>1.0.0</version>
+      <icon>Graphite Professional/graphite-professional-icon.svg</icon>
+      <tag>graphite</tag>
+      <tag>professional</tag>
+      <tag>neutral</tag>
+      <tag>precision</tag>
+      <tag>recommended</tag>
+      <file>Graphite Professional.qss</file>
+      <file>Graphite Professional Overlay.qss</file>
+    </preferencepack>
+  </content>
+
+</package>

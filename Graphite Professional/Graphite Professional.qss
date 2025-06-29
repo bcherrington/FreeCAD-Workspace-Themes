@@ -1,0 +1,815 @@
+/*
+ * Graphite Professional Theme for FreeCAD
+ * Pure gray color palette without blue undertones - professional and neutral
+ * 
+ * Color Palette:
+ * - Deep Graphite: #0a0a0a (Darkest backgrounds)
+ * - Rich Graphite: #1a1a1a (Primary panels)  
+ * - Medium Graphite: #2a2a2a (Secondary panels)
+ * - Light Graphite: #3a3a3a (Interactive elements)
+ * - Pure White: #ffffff (High contrast text)
+ * - Light Gray: #cccccc (Medium contrast text)
+ * - Medium Gray: #888888 (Muted text)
+ * 
+ * Accent Colors:
+ * - Professional Blue: #007acc (Primary selections - less saturated)
+ * - Refined Purple: #6b46c1 (Focus states, vertices)
+ * - Emerald: #059669 (Success states)
+ * - Amber: #d97706 (Warnings, highlights)
+ * - Crimson: #dc2626 (Errors, critical elements)
+ */
+
+/* =============================================================================
+   MAIN APPLICATION WINDOW
+   ============================================================================= */
+
+QMainWindow {
+    background-color: #0a0a0a; /* Deep Graphite - main application background */
+    color: #ffffff; /* Pure White text */
+}
+
+QMainWindow::separator {
+    background-color: #333333; /* Subtle border for dock separators */
+    width: 1px;
+    height: 1px;
+}
+
+/* =============================================================================
+   MENU BAR
+   ============================================================================= */
+
+QMenuBar {
+    background-color: #1a1a1a; /* Rich Graphite - menu bar background */
+    color: #ffffff; /* Pure White text */
+    border-bottom: 1px solid #333333; /* Subtle border */
+    padding: 2px;
+}
+
+QMenuBar::item {
+    background-color: transparent;
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 3px;
+}
+
+QMenuBar::item:selected {
+    background-color: #007acc; /* Professional Blue - menu selection */
+    color: #ffffff;
+}
+
+QMenuBar::item:pressed {
+    background-color: #005a99; /* Darker professional blue for pressed state */
+}
+
+/* =============================================================================
+   MENUS
+   ============================================================================= */
+
+QMenu {
+    background-color: #1a1a1a; /* Rich Graphite */
+    color: #ffffff;
+    border: 1px solid #333333; /* Subtle border */
+    border-radius: 4px;
+    padding: 4px;
+}
+
+QMenu::item {
+    background-color: transparent;
+    color: #ffffff;
+    padding: 6px 20px;
+    border-radius: 3px;
+}
+
+QMenu::item:selected {
+    background-color: #007acc; /* Professional Blue selection */
+    color: #ffffff;
+}
+
+QMenu::item:disabled {
+    color: #888888; /* Medium Gray for disabled items */
+}
+
+QMenu::separator {
+    height: 1px;
+    background-color: #333333; /* Subtle separator */
+    margin: 4px 0px;
+}
+
+QMenu::indicator {
+    width: 16px;
+    height: 16px;
+    margin-left: 4px;
+}
+
+QMenu::indicator:checked {
+    background-color: #007acc; /* Professional Blue for checked items */
+    border-radius: 2px;
+}
+
+/* =============================================================================
+   TOOLBARS
+   ============================================================================= */
+
+QToolBar {
+    background-color: #1a1a1a; /* Rich Graphite */
+    border: 1px solid #333333; /* Subtle border */
+    border-radius: 4px;
+    padding: 2px;
+    spacing: 2px;
+}
+
+QToolBar::handle {
+    background-color: #333333; /* Subtle handle */
+    width: 8px;
+    margin: 4px;
+    border-radius: 2px;
+}
+
+QToolBar::separator {
+    background-color: #333333; /* Subtle separator */
+    width: 1px;
+    margin: 4px 2px;
+}
+
+/* =============================================================================
+   TOOL BUTTONS
+   ============================================================================= */
+
+QToolButton {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 4px;
+    margin: 1px;
+}
+
+QToolButton:hover {
+    background-color: #2a2a2a; /* Medium Graphite hover */
+    border-color: #555555; /* Standard border on hover */
+}
+
+QToolButton:pressed {
+    background-color: #3a3a3a; /* Light Graphite pressed */
+    border-color: #007acc; /* Professional Blue border when pressed */
+}
+
+QToolButton:checked {
+    background-color: #007acc; /* Professional Blue for active tools */
+    color: #ffffff;
+    border-color: #005a99;
+}
+
+QToolButton:disabled {
+    color: #888888; /* Medium Gray for disabled */
+    background-color: transparent;
+}
+
+/* =============================================================================
+   BUTTONS
+   ============================================================================= */
+
+QPushButton {
+    background-color: #2a2a2a; /* Medium Graphite */
+    color: #ffffff;
+    border: 1px solid #555555; /* Standard border */
+    border-radius: 4px;
+    padding: 6px 12px;
+    min-height: 20px;
+}
+
+QPushButton:hover {
+    background-color: #3a3a3a; /* Light Graphite hover */
+    border-color: #777777; /* Emphasis border */
+}
+
+QPushButton:pressed {
+    background-color: #1a1a1a; /* Rich Graphite pressed */
+    border-color: #007acc; /* Professional Blue border */
+}
+
+QPushButton:checked {
+    background-color: #007acc; /* Professional Blue checked */
+    color: #ffffff;
+    border-color: #005a99;
+}
+
+QPushButton:disabled {
+    background-color: #1a1a1a; /* Rich Graphite disabled */
+    color: #888888; /* Medium Gray text */
+    border-color: #333333; /* Subtle border */
+}
+
+QPushButton:default {
+    border-color: #007acc; /* Professional Blue for default button */
+    border-width: 2px;
+}
+
+/* =============================================================================
+   INPUT FIELDS
+   ============================================================================= */
+
+QLineEdit {
+    background-color: #1a1a1a; /* Rich Graphite */
+    color: #ffffff;
+    border: 1px solid #555555; /* Standard border */
+    border-radius: 4px;
+    padding: 4px 8px;
+    selection-background-color: #007acc; /* Professional Blue selection */
+    selection-color: #ffffff;
+}
+
+QLineEdit:focus {
+    border-color: #007acc; /* Professional Blue focus */
+    border-width: 2px;
+}
+
+QLineEdit:disabled {
+    background-color: #0a0a0a; /* Deep Graphite disabled */
+    color: #888888; /* Medium Gray text */
+    border-color: #333333; /* Subtle border */
+}
+
+QTextEdit {
+    background-color: #1a1a1a; /* Rich Graphite */
+    color: #ffffff;
+    border: 1px solid #555555; /* Standard border */
+    border-radius: 4px;
+    selection-background-color: #007acc; /* Professional Blue selection */
+    selection-color: #ffffff;
+}
+
+QTextEdit:focus {
+    border-color: #007acc; /* Professional Blue focus */
+    border-width: 2px;
+}
+
+QPlainTextEdit {
+    background-color: #1a1a1a; /* Rich Graphite */
+    color: #ffffff;
+    border: 1px solid #555555; /* Standard border */
+    border-radius: 4px;
+    selection-background-color: #007acc; /* Professional Blue selection */
+    selection-color: #ffffff;
+}
+
+QPlainTextEdit:focus {
+    border-color: #007acc; /* Professional Blue focus */
+    border-width: 2px;
+}
+
+/* =============================================================================
+   SPIN BOXES
+   ============================================================================= */
+
+QSpinBox, QDoubleSpinBox {
+    background-color: #1a1a1a; /* Rich Graphite */
+    color: #ffffff;
+    border: 1px solid #555555; /* Standard border */
+    border-radius: 4px;
+    padding: 4px;
+    selection-background-color: #007acc; /* Professional Blue selection */
+}
+
+QSpinBox:focus, QDoubleSpinBox:focus {
+    border-color: #007acc; /* Professional Blue focus */
+    border-width: 2px;
+}
+
+QSpinBox::up-button, QDoubleSpinBox::up-button {
+    background-color: #2a2a2a; /* Medium Graphite */
+    border: 1px solid #555555;
+    border-radius: 2px;
+    width: 16px;
+}
+
+QSpinBox::up-button:hover, QDoubleSpinBox::up-button:hover {
+    background-color: #3a3a3a; /* Light Graphite hover */
+}
+
+QSpinBox::down-button, QDoubleSpinBox::down-button {
+    background-color: #2a2a2a; /* Medium Graphite */
+    border: 1px solid #555555;
+    border-radius: 2px;
+    width: 16px;
+}
+
+QSpinBox::down-button:hover, QDoubleSpinBox::down-button:hover {
+    background-color: #3a3a3a; /* Light Graphite hover */
+}
+
+/* =============================================================================
+   COMBO BOXES
+   ============================================================================= */
+
+QComboBox {
+    background-color: #2a2a2a; /* Medium Graphite */
+    color: #ffffff;
+    border: 1px solid #555555; /* Standard border */
+    border-radius: 4px;
+    padding: 4px 8px;
+    min-width: 60px;
+}
+
+QComboBox:hover {
+    background-color: #3a3a3a; /* Light Graphite hover */
+    border-color: #777777; /* Emphasis border */
+}
+
+QComboBox:focus {
+    border-color: #007acc; /* Professional Blue focus */
+    border-width: 2px;
+}
+
+QComboBox::drop-down {
+    background-color: #3a3a3a; /* Light Graphite */
+    border: none;
+    border-radius: 2px;
+    width: 20px;
+}
+
+QComboBox::down-arrow {
+    image: none;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #ffffff;
+    margin: 4px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #1a1a1a; /* Rich Graphite dropdown */
+    color: #ffffff;
+    border: 1px solid #333333; /* Subtle border */
+    border-radius: 4px;
+    selection-background-color: #007acc; /* Professional Blue selection */
+    selection-color: #ffffff;
+}
+
+/* =============================================================================
+   CHECKBOXES
+   ============================================================================= */
+
+QCheckBox {
+    color: #ffffff;
+    spacing: 8px;
+}
+
+QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+    background-color: #1a1a1a; /* Rich Graphite */
+    border: 1px solid #555555; /* Standard border */
+    border-radius: 3px;
+}
+
+QCheckBox::indicator:hover {
+    background-color: #2a2a2a; /* Medium Graphite hover */
+    border-color: #777777; /* Emphasis border */
+}
+
+QCheckBox::indicator:checked {
+    background-color: #007acc; /* Professional Blue checked */
+    border-color: #005a99;
+    image: none;
+}
+
+QCheckBox::indicator:checked:hover {
+    background-color: #005a99; /* Darker professional blue hover */
+}
+
+QCheckBox::indicator:disabled {
+    background-color: #0a0a0a; /* Deep Graphite disabled */
+    border-color: #333333; /* Subtle border */
+}
+
+/* =============================================================================
+   RADIO BUTTONS
+   ============================================================================= */
+
+QRadioButton {
+    color: #ffffff;
+    spacing: 8px;
+}
+
+QRadioButton::indicator {
+    width: 16px;
+    height: 16px;
+    background-color: #1a1a1a; /* Rich Graphite */
+    border: 1px solid #555555; /* Standard border */
+    border-radius: 8px;
+}
+
+QRadioButton::indicator:hover {
+    background-color: #2a2a2a; /* Medium Graphite hover */
+    border-color: #777777; /* Emphasis border */
+}
+
+QRadioButton::indicator:checked {
+    background-color: #007acc; /* Professional Blue checked */
+    border-color: #005a99;
+}
+
+QRadioButton::indicator:checked:hover {
+    background-color: #005a99; /* Darker professional blue hover */
+}
+
+/* =============================================================================
+   SLIDERS
+   ============================================================================= */
+
+QSlider::groove:horizontal {
+    background-color: #1a1a1a; /* Rich Graphite */
+    height: 6px;
+    border-radius: 3px;
+    border: 1px solid #333333; /* Subtle border */
+}
+
+QSlider::handle:horizontal {
+    background-color: #007acc; /* Professional Blue handle */
+    border: 1px solid #005a99;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    margin: -6px 0;
+}
+
+QSlider::handle:horizontal:hover {
+    background-color: #005a99; /* Darker professional blue hover */
+}
+
+QSlider::groove:vertical {
+    background-color: #1a1a1a; /* Rich Graphite */
+    width: 6px;
+    border-radius: 3px;
+    border: 1px solid #333333; /* Subtle border */
+}
+
+QSlider::handle:vertical {
+    background-color: #007acc; /* Professional Blue handle */
+    border: 1px solid #005a99;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    margin: 0 -6px;
+}
+
+QSlider::handle:vertical:hover {
+    background-color: #005a99; /* Darker professional blue hover */
+}
+
+/* =============================================================================
+   PROGRESS BARS
+   ============================================================================= */
+
+QProgressBar {
+    background-color: #1a1a1a; /* Rich Graphite */
+    color: #ffffff;
+    border: 1px solid #555555; /* Standard border */
+    border-radius: 4px;
+    text-align: center;
+    padding: 2px;
+}
+
+QProgressBar::chunk {
+    background-color: #007acc; /* Professional Blue progress */
+    border-radius: 3px;
+}
+
+/* =============================================================================
+   TABS
+   ============================================================================= */
+
+QTabWidget::pane {
+    background-color: #2a2a2a; /* Medium Graphite */
+    border: 1px solid #555555; /* Standard border */
+    border-radius: 4px;
+}
+
+QTabWidget::tab-bar {
+    alignment: left;
+}
+
+QTabBar::tab {
+    background-color: #1a1a1a; /* Rich Graphite */
+    color: #cccccc; /* Light Gray text */
+    border: 1px solid #333333; /* Subtle border */
+    border-bottom: none;
+    border-radius: 4px 4px 0px 0px;
+    padding: 6px 12px;
+    margin-right: 2px;
+}
+
+QTabBar::tab:hover {
+    background-color: #2a2a2a; /* Medium Graphite hover */
+    color: #ffffff; /* Pure White text */
+}
+
+QTabBar::tab:selected {
+    background-color: #2a2a2a; /* Medium Graphite selected */
+    color: #ffffff; /* Pure White text */
+    border-color: #555555; /* Standard border */
+}
+
+QTabBar::tab:!selected {
+    margin-top: 2px;
+}
+
+/* =============================================================================
+   SCROLLBARS - Pure Gray
+   ============================================================================= */
+
+QScrollBar:vertical {
+    background-color: rgba(136, 136, 136, 0.1); /* Medium gray track */
+    width: 12px;
+    border-radius: 6px;
+    border: none;
+}
+
+QScrollBar::handle:vertical {
+    background-color: rgba(136, 136, 136, 0.4); /* Medium gray handle */
+    border-radius: 6px;
+    min-height: 20px;
+    margin: 0px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: rgba(136, 136, 136, 0.6); /* Enhanced gray hover */
+}
+
+QScrollBar:horizontal {
+    background-color: rgba(136, 136, 136, 0.1); /* Medium gray track */
+    height: 12px;
+    border-radius: 6px;
+    border: none;
+}
+
+QScrollBar::handle:horizontal {
+    background-color: rgba(136, 136, 136, 0.4); /* Medium gray handle */
+    border-radius: 6px;
+    min-width: 20px;
+    margin: 0px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background-color: rgba(136, 136, 136, 0.6); /* Enhanced gray hover */
+}
+
+QScrollBar::add-line, QScrollBar::sub-line {
+    background: none;
+    border: none;
+}
+
+QScrollBar::add-page, QScrollBar::sub-page {
+    background: none;
+}
+
+/* =============================================================================
+   TREE VIEWS
+   ============================================================================= */
+
+QTreeView {
+    background-color: #2a2a2a; /* Medium Graphite */
+    color: #ffffff;
+    border: 1px solid #555555; /* Standard border */
+    border-radius: 4px;
+    selection-background-color: #007acc; /* Professional Blue selection */
+    selection-color: #ffffff;
+    alternate-background-color: #252525; /* Alternating row color */
+    show-decoration-selected: 1;
+}
+
+QTreeView::item {
+    padding: 2px;
+    border: none;
+}
+
+QTreeView::item:hover {
+    background-color: rgba(0, 122, 204, 0.2); /* Professional Blue hover with transparency */
+}
+
+QTreeView::item:selected {
+    background-color: #007acc; /* Professional Blue selection */
+    color: #ffffff;
+}
+
+/* =============================================================================
+   LIST VIEWS
+   ============================================================================= */
+
+QListView {
+    background-color: #2a2a2a; /* Medium Graphite */
+    color: #ffffff;
+    border: 1px solid #555555; /* Standard border */
+    border-radius: 4px;
+    selection-background-color: #007acc; /* Professional Blue selection */
+    selection-color: #ffffff;
+    alternate-background-color: #252525; /* Alternating row color */
+}
+
+QListView::item {
+    padding: 4px;
+    border: none;
+}
+
+QListView::item:hover {
+    background-color: rgba(0, 122, 204, 0.2); /* Professional Blue hover with transparency */
+}
+
+QListView::item:selected {
+    background-color: #007acc; /* Professional Blue selection */
+    color: #ffffff;
+}
+
+/* =============================================================================
+   TABLE VIEWS
+   ============================================================================= */
+
+QTableView {
+    background-color: #2a2a2a; /* Medium Graphite */
+    color: #ffffff;
+    border: 1px solid #555555; /* Standard border */
+    border-radius: 4px;
+    selection-background-color: #007acc; /* Professional Blue selection */
+    selection-color: #ffffff;
+    alternate-background-color: #252525; /* Alternating row color */
+    gridline-color: #333333; /* Subtle grid lines */
+}
+
+QTableView::item {
+    padding: 4px;
+    border: none;
+}
+
+QTableView::item:hover {
+    background-color: rgba(0, 122, 204, 0.2); /* Professional Blue hover with transparency */
+}
+
+QTableView::item:selected {
+    background-color: #007acc; /* Professional Blue selection */
+    color: #ffffff;
+}
+
+QHeaderView::section {
+    background-color: #1a1a1a; /* Rich Graphite header */
+    color: #ffffff;
+    border: 1px solid #333333; /* Subtle border */
+    padding: 4px 8px;
+}
+
+QHeaderView::section:hover {
+    background-color: #2a2a2a; /* Medium Graphite hover */
+}
+
+/* =============================================================================
+   GROUP BOXES
+   ============================================================================= */
+
+QGroupBox {
+    color: #ffffff;
+    border: 1px solid #555555; /* Standard border */
+    border-radius: 4px;
+    margin-top: 8px;
+    padding-top: 8px;
+    font-weight: bold;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    left: 8px;
+    padding: 0 4px;
+    background-color: #2a2a2a; /* Medium Graphite title background */
+    border-radius: 2px;
+}
+
+/* =============================================================================
+   DOCK WIDGETS
+   ============================================================================= */
+
+QDockWidget {
+    background-color: #2a2a2a; /* Medium Graphite */
+    color: #ffffff;
+    border: 1px solid #555555; /* Standard border */
+    border-radius: 4px;
+}
+
+QDockWidget::title {
+    background-color: #1a1a1a; /* Rich Graphite title */
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 4px 4px 0px 0px;
+    text-align: left;
+}
+
+QDockWidget::close-button, QDockWidget::float-button {
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    padding: 2px;
+}
+
+QDockWidget::close-button:hover, QDockWidget::float-button:hover {
+    background-color: #dc2626; /* Crimson hover for close */
+    border-color: #b91c1c;
+}
+
+/* =============================================================================
+   STATUS BAR
+   ============================================================================= */
+
+QStatusBar {
+    background-color: #1a1a1a; /* Rich Graphite */
+    color: #ffffff;
+    border-top: 1px solid #333333; /* Subtle top border */
+}
+
+QStatusBar::item {
+    border: none;
+}
+
+QStatusBar QLabel {
+    color: #ffffff;
+    padding: 2px 4px;
+}
+
+/* =============================================================================
+   TOOLTIPS
+   ============================================================================= */
+
+QToolTip {
+    background-color: #0a0a0a; /* Deep Graphite */
+    color: #ffffff;
+    border: 1px solid #555555; /* Standard border */
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+/* =============================================================================
+   SPLITTERS
+   ============================================================================= */
+
+QSplitter::handle {
+    background-color: #333333; /* Subtle handle */
+    border: 1px solid #555555; /* Standard border */
+}
+
+QSplitter::handle:horizontal {
+    width: 3px;
+    margin: 2px 0px;
+}
+
+QSplitter::handle:vertical {
+    height: 3px;
+    margin: 0px 2px;
+}
+
+QSplitter::handle:hover {
+    background-color: #007acc; /* Professional Blue hover */
+}
+
+/* =============================================================================
+   FREECAD SPECIFIC COMPONENTS
+   ============================================================================= */
+
+/* Property Editor */
+Gui--PropertyEditor--PropertyEditor {
+    background-color: #2a2a2a; /* Medium Graphite */
+    color: #ffffff;
+    border: 1px solid #555555; /* Standard border */
+    selection-background-color: #007acc; /* Professional Blue selection */
+    selection-color: #ffffff;
+    alternate-background-color: #252525; /* Alternating rows */
+}
+
+/* Task Panel */
+Gui--TaskView--TaskView {
+    background-color: #2a2a2a; /* Medium Graphite */
+    color: #ffffff;
+    border: 1px solid #555555; /* Standard border */
+}
+
+/* 3D View */
+Gui--View3DInventor {
+    background-color: #ffffff; /* White 3D viewport - preserved for CAD work */
+    border: 1px solid #555555; /* Standard border */
+}
+
+/* Report View */
+Gui--ReportView {
+    background-color: #2a2a2a; /* Medium Graphite */
+    color: #ffffff;
+    border: 1px solid #555555; /* Standard border */
+    selection-background-color: #007acc; /* Professional Blue selection */
+    selection-color: #ffffff;
+}
+
+/* Python Console */
+Gui--PythonConsole {
+    background-color: #0a0a0a; /* Deep Graphite for console */
+    color: #ffffff;
+    border: 1px solid #555555; /* Standard border */
+    font-family: "Consolas", "Monaco", "Courier New", monospace;
+    selection-background-color: #007acc; /* Professional Blue selection */
+    selection-color: #ffffff;
+}

@@ -1,0 +1,460 @@
+/*
+MyCustomDark Overlay Theme - Classic Style Approach
+============================================================================================================
+Ultra-minimal overlay stylesheet following FreeCAD Classic theme methodology.
+Based on system "Light Theme + Dark Background.qss" pattern (~40 lines).
+
+DESIGN PRINCIPLE: COLOR-ONLY OVERRIDES
+- Only override colors necessary for white background visibility
+- No structural styling (padding, margins, borders)
+- Maximum compatibility with Qt Fusion defaults
+- Keep file size minimal for performance (~40-50 lines total)
+============================================================================================================
+*/
+
+/* Essential color overrides for white background visibility */
+
+/* Tree view and list items - ensure dark text on light backgrounds */
+QAbstractItemView {
+  color: #111827;
+  background-color: transparent;
+}
+
+/* Property editor - darker group background with traditional alternating rows */
+Gui--PropertyEditor--PropertyEditor {
+  qproperty-groupTextColor: #ffffff;
+  qproperty-groupBackground: #222222;
+  qproperty-itemBackground: #ffffff;
+  alternate-background-color: #F8F8F8;
+}
+
+/* Tree view checkboxes - dark checkboxes for light backgrounds */
+/* SCOPE: Property panel checkboxes in tree view */
+QTreeView::indicator {
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;  /* LIGHTER border when unchecked for subtlety */
+  border-radius: 2px;
+  width: 13px;
+  height: 13px;
+}
+
+QTreeView::indicator:checked {
+  image: url(qss:images_classic/check-mark-black.png);
+  background-color: #ffffff;
+  border: 1px solid #111827;  /* DARKER border when checked for emphasis */
+  border-radius: 2px;
+}
+
+QTreeView::indicator:hover {
+  border: 1px solid #666666;  /* MEDIUM border on hover for feedback */
+}
+
+/* Property editor input fields - ensure proper contrast */
+Gui--PropertyEditor--PropertyEditor QLineEdit,
+Gui--PropertyEditor--PropertyEditor QSpinBox,
+Gui--PropertyEditor--PropertyEditor QDoubleSpinBox,
+Gui--PropertyEditor--PropertyEditor QComboBox {
+  color: #111827;
+  background-color: #ffffff;
+  selection-background-color: @ThemeAccentColor1;
+  selection-color: #ffffff;
+}
+
+/* Property editor group headers - dark text on light background */
+Gui--PropertyEditor--PropertyEditor QTreeView::item {
+  color: #111827;
+}
+
+/* Ensure overlay title bars remain dark */
+Gui--OverlayTitleBar,
+Gui--OverlaySplitterHandle {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+/* Overlay transparency effects - essential for transparent mode */
+Gui--OverlayTabWidget {
+  qproperty-effectColor: rgba(255, 255, 255, 200);
+  qproperty-effectBlurRadius: 0;
+  qproperty-effectOffsetX: 0;
+  qproperty-effectOffsetY: 0;
+  qproperty-effectWidth: 1;
+  qproperty-effectHeight: 1;
+  qproperty-enableEffect: 1;
+}
+
+/* Overlay proxy widget for transparency effects */
+Gui--OverlayProxyWidget {
+  qproperty-hintColor: rgba(250, 250, 250, 0.6);
+}
+
+/* Tab widget panes - transparent background */
+QTabWidget::pane,
+Gui--OverlayTabWidget::pane {
+  background-color: transparent;
+  border: transparent;
+}
+
+/* Task panel container - darker styling for overlay mode */
+Gui--TaskView--TaskView {
+  background-color: rgba(40, 40, 40, 0.9);
+  border: 1px solid #2a2a2a;
+  border-radius: 3px;
+}
+
+/* Task panel frame - darker background */
+QFrame[class="panel"] {
+  background-color: rgba(40, 40, 40, 0.9);
+  border: 1px solid #2a2a2a;
+}
+
+/* Task panel scroll areas - darker styling */
+Gui--TaskView--TaskView QScrollArea {
+  background-color: transparent;
+  border: none;
+}
+
+/* Task panel action groups - darker styling */
+QSint--ActionGroup {
+  background-color: rgba(40, 40, 40, 0.9);
+  border: 1px solid #2a2a2a;
+}
+
+/* Task panel content areas - darker background */
+QSint--ActionGroup QFrame[class="content"] {
+  background-color: rgba(50, 50, 50, 0.9);
+  border: 1px solid #3a3a3a;
+  border-top: none;
+}
+
+/* Task panel headers - darker styling */
+QSint--ActionGroup QFrame[class="header"] {
+  background-color: rgba(30, 30, 30, 0.95);
+  border: 1px solid #2a2a2a;
+  color: #ffffff;
+}
+
+/* SELECTOR_SOURCE: QSint library - All input widgets within task panel content */
+/* APPLIES_TO: All text elements within task panel content areas */
+/* UI_FILE_SOURCE: TaskView/*.ui files contain various input widgets in content frames */
+/* CLASSIC_DEFAULT: color: black; (inherited from parent elements) */
+/* QT_FUSION_DEFAULT: System text colors for input widgets */
+QSint--ActionGroup QFrame[class="content"] QLabel,
+QSint--ActionGroup QFrame[class="content"] QLineEdit,
+QSint--ActionGroup QFrame[class="content"] QTextEdit,
+QSint--ActionGroup QFrame[class="content"] QPlainTextEdit,
+QSint--ActionGroup QFrame[class="content"] QSpinBox,
+QSint--ActionGroup QFrame[class="content"] QDoubleSpinBox,
+QSint--ActionGroup QFrame[class="content"] QComboBox,
+QSint--ActionGroup QFrame[class="content"] QCheckBox,
+QSint--ActionGroup QFrame[class="content"] QRadioButton {
+  background-color: rgba(50, 50, 50, 0.9) !important;  /* OVERRIDE: Ensure all task panel text is white for dark theme visibility */
+  /* CLASSIC_PRESERVED: Individual widget styling maintained */
+}
+
+/* Tab styling - active tabs white, inactive tabs dark */
+QTabWidget::tab-bar {
+  alignment: left;
+}
+
+QTabBar::tab {
+  background-color: rgba(40, 40, 40, 0.9);
+  color: #d1d5db;
+  border: 1px solid #2a2a2a;
+  border-top: none;
+  padding: 4px 8px;
+  margin-right: 2px;
+}
+
+QTabBar::tab:selected {
+  background-color: #ffffff;
+  color: #111827;
+  border: 1px solid #666666;
+  border-top: none;
+}
+
+QTabBar::tab:hover:!selected {
+  background-color: rgba(120, 120, 120, 0.9);
+  color: #ffffff;
+}
+
+/* Overlay tab widget specific styling */
+Gui--OverlayTabWidget QTabBar::tab {
+  background-color: rgba(40, 40, 40, 0.9);
+  color: #d1d5db;
+  border: 1px solid #2a2a2a;
+  border-top: none;
+}
+
+Gui--OverlayTabWidget QTabBar::tab:selected {
+  background-color: #ffffff;
+  color: #111827;
+  border: 1px solid #666666;
+  border-top: none;
+}
+
+/*==================================================================================================
+TEMPORARY TASK PANEL TESTING SECTION - REMOVE AFTER TESTING
+==================================================================================================*/
+/*
+INSTRUCTIONS: Apply this stylesheet and test Task Panel controls to identify working selectors.
+Each control type has a different bright color for easy identification.
+DELETE THIS ENTIRE SECTION after testing is complete.
+*/
+
+/* TEST: Task Panel Line Edit Fields - BRIGHT RED backgrounds */
+QSint--ActionGroup QFrame[class="content"] QLineEdit {
+  background-color: #FF0000 !important;  /* BRIGHT RED - Text input fields */
+  color: #ffffff !important;
+  border: 2px solid #FFFF00 !important;  /* YELLOW border */
+}
+
+/* TEST: Task Panel Spin Boxes - BRIGHT GREEN backgrounds */
+QSint--ActionGroup QFrame[class="content"] QSpinBox,
+QSint--ActionGroup QFrame[class="content"] QDoubleSpinBox {
+  background-color: #00FF00 !important;  /* BRIGHT GREEN - Spin boxes */
+  color: #111827 !important;
+  border: 2px solid #FF00FF !important;  /* MAGENTA border */
+}
+
+/* TEST: Task Panel Combo Boxes - BRIGHT BLUE backgrounds */
+QSint--ActionGroup QFrame[class="content"] QComboBox {
+  background-color: #0000FF !important;  /* BRIGHT BLUE - Dropdown boxes */
+  color: #ffffff !important;
+  border: 2px solid #00FFFF !important;  /* CYAN border */
+}
+
+/* TEST: Task Panel Checkboxes - ORANGE backgrounds */
+QSint--ActionGroup QFrame[class="content"] QCheckBox {
+  background-color: #FF8000 !important;  /* ORANGE - Checkboxes */
+  color: #ffffff !important;
+}
+
+/* TEST: Task Panel Radio Buttons - PURPLE backgrounds */
+QSint--ActionGroup QFrame[class="content"] QRadioButton {
+  background-color: #8000FF !important;  /* PURPLE - Radio buttons */
+  color: #ffffff !important;
+}
+
+/* TEST: Task Panel Labels - YELLOW backgrounds */
+QSint--ActionGroup QFrame[class="content"] QLabel {
+  background-color: #FFFF00 !important;  /* YELLOW - Labels */
+  color: #111827 !important;
+}
+
+/* TEST: Task Panel Push Buttons - PINK backgrounds */
+QSint--ActionGroup QFrame[class="content"] QPushButton {
+  background-color: #FF69B4 !important;  /* PINK - Push buttons */
+  color: #111827 !important;
+  border: 2px solid #111827 !important;
+}
+
+/* TEST: Alternative Task Panel selectors (if above don't work) */
+/* Try these if the QSint--ActionGroup selectors don't show colors */
+
+/* Alternative 1: Direct Task Panel widget targeting */
+Gui--TaskView--TaskView QLineEdit {
+  background-color: #FF4444 !important;  /* LIGHT RED - Alternative line edits */
+}
+
+Gui--TaskView--TaskView QSpinBox,
+Gui--TaskView--TaskView QDoubleSpinBox {
+  background-color: #44FF44 !important;  /* LIGHT GREEN - Alternative spin boxes */
+}
+
+Gui--TaskView--TaskView QComboBox {
+  background-color: #4444FF !important;  /* LIGHT BLUE - Alternative combo boxes */
+}
+
+/* Alternative 2: Broader Task Panel targeting */
+QWidget[class="TaskPanel"] QLineEdit {
+  background-color: #FF6666 !important;  /* LIGHTER RED - Broader line edits */
+}
+
+QWidget[class="TaskPanel"] QSpinBox,
+QWidget[class="TaskPanel"] QDoubleSpinBox {
+  background-color: #66FF66 !important;  /* LIGHTER GREEN - Broader spin boxes */
+}
+
+QWidget[class="TaskPanel"] QComboBox {
+  background-color: #6666FF !important;  /* LIGHTER BLUE - Broader combo boxes */
+}
+
+/* TEST: Expression Spin Boxes and Special Controls */
+/* These might use different class names or be nested differently */
+
+/* Expression spin boxes - BRIGHT CYAN */
+Gui--ExpressionSpinBox {
+  background-color: #00FFFF !important;  /* CYAN - Expression spin boxes */
+  color: #111827 !important;
+  border: 2px solid #FF0000 !important;
+}
+
+/* Expression line edits - BRIGHT LIME */
+Gui--ExpressionLineEdit {
+  background-color: #CCFF00 !important;  /* LIME - Expression line edits */
+  color: #111827 !important;
+  border: 2px solid #FF0000 !important;
+}
+
+/* Quantity spin boxes - BRIGHT TURQUOISE */
+Gui--QuantitySpinBox {
+  background-color: #40E0D0 !important;  /* TURQUOISE - Quantity spin boxes */
+  color: #111827 !important;
+  border: 2px solid #FF0000 !important;
+}
+
+/* Input fields - BRIGHT CORAL */
+Gui--InputField {
+  background-color: #FF7F50 !important;  /* CORAL - Input fields */
+  color: #111827 !important;
+  border: 2px solid #0000FF !important;
+}
+
+/* TEST: White Background Areas with White Text Issues */
+/* Target containers that might have white backgrounds */
+
+/* Task panel scroll areas - DARK GRAY to contrast white text */
+QSint--ActionGroup QScrollArea {
+  background-color: #2a2a2a !important;  /* DARK GRAY - Scroll areas */
+  color: #ffffff !important;
+}
+
+/* Task panel frames - DARK BLUE to contrast white text */
+QSint--ActionGroup QFrame {
+  background-color: #000080 !important;  /* DARK BLUE - All frames */
+  color: #ffffff !important;
+}
+
+/* Task panel widgets - DARK GREEN to contrast white text */
+QSint--ActionGroup QWidget {
+  background-color: #006400 !important;  /* DARK GREEN - All widgets */
+  color: #ffffff !important;
+}
+
+/* TEST: Tooltips and Hints */
+/* These are often separate from main controls */
+
+/* Standard tooltips - BRIGHT YELLOW with BLACK text */
+QToolTip {
+  background-color: #FFFF00 !important;  /* YELLOW - Tooltips */
+  color: #111827 !important;
+  border: 2px solid #FF0000 !important;
+}
+
+/* Status tips - BRIGHT ORANGE with BLACK text */
+QStatusTip {
+  background-color: #FFA500 !important;  /* ORANGE - Status tips */
+  color: #111827 !important;
+}
+
+/* Hint labels - BRIGHT PINK with BLACK text */
+QLabel[class="hint"],
+QLabel[class="tip"] {
+  background-color: #FF1493 !important;  /* PINK - Hint labels */
+  color: #111827 !important;
+}
+
+/* TEST: Attachment Mode and Special Sections */
+/* These might use specific class names or be in special containers */
+
+/* Attachment mode sections - BRIGHT MAGENTA with WHITE text */
+QWidget[class="attachment"],
+QFrame[class="attachment"] {
+  background-color: #FF00FF !important;  /* MAGENTA - Attachment sections */
+  color: #ffffff !important;
+}
+
+/* Group boxes in task panels - BRIGHT INDIGO with WHITE text */
+QSint--ActionGroup QGroupBox {
+  background-color: #4B0082 !important;  /* INDIGO - Group boxes */
+  color: #ffffff !important;
+}
+
+QSint--ActionGroup QGroupBox::title {
+  background-color: #4B0082 !important;  /* INDIGO - Group box titles */
+  color: #ffffff !important;
+}
+
+/* Tab widgets in task panels - BRIGHT TEAL with WHITE text */
+QSint--ActionGroup QTabWidget {
+  background-color: #008080 !important;  /* TEAL - Tab widgets */
+  color: #ffffff !important;
+}
+
+QSint--ActionGroup QTabWidget::pane {
+  background-color: #008080 !important;  /* TEAL - Tab panes */
+}
+
+QSint--ActionGroup QTabBar::tab {
+  background-color: #20B2AA !important;  /* LIGHT TEAL - Tab buttons */
+  color: #111827 !important;
+}
+
+/*==================================================================================================
+END TEMPORARY TESTING SECTION
+==================================================================================================*/
+
+/* Overlay scrollbar styling - dark scrollbars for white backgrounds */
+/* APPLIES TO: Scrollbars in overlay panels with white backgrounds */
+
+/* Horizontal scroll bars in overlay panels */
+Gui--OverlayTabWidget QScrollBar:horizontal {
+  height: 8px;
+  background-color: rgba(0, 0, 0, 0.05);  /* Very subtle dark background */
+  border: none;
+  margin: 0px;
+}
+
+/* Vertical scroll bars in overlay panels */
+Gui--OverlayTabWidget QScrollBar:vertical {
+  width: 8px;
+  background-color: rgba(0, 0, 0, 0.05);  /* Very subtle dark background */
+  border: none;
+  margin: 0px;
+}
+
+/* Horizontal scroll bar handle in overlay panels */
+Gui--OverlayTabWidget QScrollBar::handle:horizontal {
+  background-color: rgba(0, 0, 0, 0.3);  /* Semi-transparent dark */
+  border: none;
+  min-width: 20px;
+  margin: 0px;
+}
+
+/* Horizontal scroll bar handle when hovered in overlay panels */
+Gui--OverlayTabWidget QScrollBar::handle:horizontal:hover {
+  background-color: rgba(0, 0, 0, 0.5);  /* More opaque on hover */
+}
+
+/* Vertical scroll bar handle in overlay panels */
+Gui--OverlayTabWidget QScrollBar::handle:vertical {
+  background-color: rgba(0, 0, 0, 0.3);  /* Semi-transparent dark */
+  border: none;
+  min-height: 20px;
+  margin: 0px;
+}
+
+/* Vertical scroll bar handle when hovered in overlay panels */
+Gui--OverlayTabWidget QScrollBar::handle:vertical:hover {
+  background-color: rgba(0, 0, 0, 0.5);  /* More opaque on hover */
+}
+
+/* Remove arrow buttons for modern design in overlay panels */
+Gui--OverlayTabWidget QScrollBar::add-line:horizontal,
+Gui--OverlayTabWidget QScrollBar::sub-line:horizontal,
+Gui--OverlayTabWidget QScrollBar::add-line:vertical,
+Gui--OverlayTabWidget QScrollBar::sub-line:vertical {
+  width: 0px;
+  height: 0px;
+  border: none;
+  background: none;
+}
+
+/* Page areas transparent in overlay panels */
+Gui--OverlayTabWidget QScrollBar::add-page:horizontal,
+Gui--OverlayTabWidget QScrollBar::sub-page:horizontal,
+Gui--OverlayTabWidget QScrollBar::add-page:vertical,
+Gui--OverlayTabWidget QScrollBar::sub-page:vertical {
+  background: transparent;
+}

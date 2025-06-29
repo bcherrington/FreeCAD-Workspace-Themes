@@ -1,0 +1,832 @@
+/*
+ * Slate Professional Theme for FreeCAD
+ * Professional slate-based color palette with expert design principles
+ * 
+ * Color Palette:
+ * - Deep Charcoal: #0f172a (Deepest backgrounds)
+ * - Rich Slate: #1e293b (Primary panels)  
+ * - Medium Slate: #334155 (Secondary panels)
+ * - Light Slate: #475569 (Interactive elements)
+ * - Primary Text: #f8fafc (High contrast white)
+ * - Secondary Text: #cbd5e1 (Medium contrast)
+ * - Muted Text: #94a3b8 (Disabled/placeholder)
+ * 
+ * Accent Colors:
+ * - Sky Blue: #0ea5e9 (Primary selections)
+ * - Violet: #8b5cf6 (Focus states, vertices)
+ * - Emerald: #059669 (Success states)
+ * - Amber: #f59e0b (Warnings, highlights)
+ * - Crimson: #dc2626 (Errors, critical elements)
+ */
+
+/* =============================================================================
+   MAIN APPLICATION WINDOW
+   ============================================================================= */
+
+QMainWindow {
+    background-color: #0f172a; /* Deep Charcoal - main application background */
+    color: #f8fafc; /* Primary Text - high contrast white */
+}
+
+QMainWindow::separator {
+    background-color: #374151; /* Subtle border for dock separators */
+    width: 1px;
+    height: 1px;
+}
+
+/* =============================================================================
+   MENU BAR
+   ============================================================================= */
+
+QMenuBar {
+    background-color: #1e293b; /* Rich Slate - menu bar background */
+    color: #f8fafc; /* Primary Text */
+    border-bottom: 1px solid #374151; /* Subtle border */
+    padding: 2px;
+}
+
+QMenuBar::item {
+    background-color: transparent;
+    color: #f8fafc;
+    padding: 4px 8px;
+    border-radius: 3px;
+}
+
+QMenuBar::item:selected {
+    background-color: #0ea5e9; /* Sky Blue - menu selection */
+    color: #ffffff;
+}
+
+QMenuBar::item:pressed {
+    background-color: #0284c7; /* Darker sky blue for pressed state */
+}
+
+/* =============================================================================
+   MENUS
+   ============================================================================= */
+
+QMenu {
+    background-color: #1e293b; /* Rich Slate */
+    color: #f8fafc;
+    border: 1px solid #374151; /* Subtle border */
+    border-radius: 4px;
+    padding: 4px;
+}
+
+QMenu::item {
+    background-color: transparent;
+    color: #f8fafc;
+    padding: 6px 20px;
+    border-radius: 3px;
+}
+
+QMenu::item:selected {
+    background-color: #0ea5e9; /* Sky Blue selection */
+    color: #ffffff;
+}
+
+QMenu::item:disabled {
+    color: #94a3b8; /* Muted Text for disabled items */
+}
+
+QMenu::separator {
+    height: 1px;
+    background-color: #374151; /* Subtle separator */
+    margin: 4px 0px;
+}
+
+QMenu::indicator {
+    width: 16px;
+    height: 16px;
+    margin-left: 4px;
+}
+
+QMenu::indicator:checked {
+    background-color: #0ea5e9; /* Sky Blue for checked items */
+    border-radius: 2px;
+}
+
+/* =============================================================================
+   TOOLBARS
+   ============================================================================= */
+
+QToolBar {
+    background-color: #1e293b; /* Rich Slate */
+    border: 1px solid #374151; /* Subtle border */
+    border-radius: 4px;
+    padding: 2px;
+    spacing: 2px;
+}
+
+QToolBar::handle {
+    background-color: #374151; /* Subtle handle */
+    width: 8px;
+    margin: 4px;
+    border-radius: 2px;
+}
+
+QToolBar::separator {
+    background-color: #374151; /* Subtle separator */
+    width: 1px;
+    margin: 4px 2px;
+}
+
+/* =============================================================================
+   TOOL BUTTONS
+   ============================================================================= */
+
+QToolButton {
+    background-color: transparent;
+    color: #f8fafc;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 4px;
+    margin: 1px;
+}
+
+QToolButton:hover {
+    background-color: #334155; /* Medium Slate hover */
+    border-color: #64748b; /* Standard border on hover */
+}
+
+QToolButton:pressed {
+    background-color: #475569; /* Light Slate pressed */
+    border-color: #0ea5e9; /* Sky Blue border when pressed */
+}
+
+QToolButton:checked {
+    background-color: #0ea5e9; /* Sky Blue for active tools */
+    color: #ffffff;
+    border-color: #0284c7;
+}
+
+QToolButton:disabled {
+    color: #94a3b8; /* Muted Text for disabled */
+    background-color: transparent;
+}
+
+/* =============================================================================
+   BUTTONS
+   ============================================================================= */
+
+QPushButton {
+    background-color: #334155; /* Medium Slate */
+    color: #f8fafc;
+    border: 1px solid #64748b; /* Standard border */
+    border-radius: 4px;
+    padding: 6px 12px;
+    min-height: 20px;
+}
+
+QPushButton:hover {
+    background-color: #475569; /* Light Slate hover */
+    border-color: #94a3b8; /* Emphasis border */
+}
+
+QPushButton:pressed {
+    background-color: #1e293b; /* Rich Slate pressed */
+    border-color: #0ea5e9; /* Sky Blue border */
+}
+
+QPushButton:checked {
+    background-color: #0ea5e9; /* Sky Blue checked */
+    color: #ffffff;
+    border-color: #0284c7;
+}
+
+QPushButton:disabled {
+    background-color: #1e293b; /* Rich Slate disabled */
+    color: #94a3b8; /* Muted Text */
+    border-color: #374151; /* Subtle border */
+}
+
+QPushButton:default {
+    border-color: #0ea5e9; /* Sky Blue for default button */
+    border-width: 2px;
+}
+
+/* =============================================================================
+   INPUT FIELDS
+   ============================================================================= */
+
+QLineEdit {
+    background-color: #1e293b; /* Rich Slate */
+    color: #f8fafc;
+    border: 1px solid #64748b; /* Standard border */
+    border-radius: 4px;
+    padding: 4px 8px;
+    selection-background-color: #0ea5e9; /* Sky Blue selection */
+    selection-color: #ffffff;
+}
+
+QLineEdit:focus {
+    border-color: #0ea5e9; /* Sky Blue focus */
+    border-width: 2px;
+}
+
+QLineEdit:disabled {
+    background-color: #0f172a; /* Deep Charcoal disabled */
+    color: #94a3b8; /* Muted Text */
+    border-color: #374151; /* Subtle border */
+}
+
+QTextEdit {
+    background-color: #1e293b; /* Rich Slate */
+    color: #f8fafc;
+    border: 1px solid #64748b; /* Standard border */
+    border-radius: 4px;
+    selection-background-color: #0ea5e9; /* Sky Blue selection */
+    selection-color: #ffffff;
+}
+
+QTextEdit:focus {
+    border-color: #0ea5e9; /* Sky Blue focus */
+    border-width: 2px;
+}
+
+QPlainTextEdit {
+    background-color: #1e293b; /* Rich Slate */
+    color: #f8fafc;
+    border: 1px solid #64748b; /* Standard border */
+    border-radius: 4px;
+    selection-background-color: #0ea5e9; /* Sky Blue selection */
+    selection-color: #ffffff;
+}
+
+QPlainTextEdit:focus {
+    border-color: #0ea5e9; /* Sky Blue focus */
+    border-width: 2px;
+}
+
+/* =============================================================================
+   SPIN BOXES
+   ============================================================================= */
+
+QSpinBox, QDoubleSpinBox {
+    background-color: #1e293b; /* Rich Slate */
+    color: #f8fafc;
+    border: 1px solid #64748b; /* Standard border */
+    border-radius: 4px;
+    padding: 4px;
+    selection-background-color: #0ea5e9; /* Sky Blue selection */
+}
+
+QSpinBox:focus, QDoubleSpinBox:focus {
+    border-color: #0ea5e9; /* Sky Blue focus */
+    border-width: 2px;
+}
+
+QSpinBox::up-button, QDoubleSpinBox::up-button {
+    background-color: #334155; /* Medium Slate */
+    border: 1px solid #64748b;
+    border-radius: 2px;
+    width: 16px;
+}
+
+QSpinBox::up-button:hover, QDoubleSpinBox::up-button:hover {
+    background-color: #475569; /* Light Slate hover */
+}
+
+QSpinBox::down-button, QDoubleSpinBox::down-button {
+    background-color: #334155; /* Medium Slate */
+    border: 1px solid #64748b;
+    border-radius: 2px;
+    width: 16px;
+}
+
+QSpinBox::down-button:hover, QDoubleSpinBox::down-button:hover {
+    background-color: #475569; /* Light Slate hover */
+}
+
+/* =============================================================================
+   COMBO BOXES
+   ============================================================================= */
+
+QComboBox {
+    background-color: #334155; /* Medium Slate */
+    color: #f8fafc;
+    border: 1px solid #64748b; /* Standard border */
+    border-radius: 4px;
+    padding: 4px 8px;
+    min-width: 60px;
+}
+
+QComboBox:hover {
+    background-color: #475569; /* Light Slate hover */
+    border-color: #94a3b8; /* Emphasis border */
+}
+
+QComboBox:focus {
+    border-color: #0ea5e9; /* Sky Blue focus */
+    border-width: 2px;
+}
+
+QComboBox::drop-down {
+    background-color: #475569; /* Light Slate */
+    border: none;
+    border-radius: 2px;
+    width: 20px;
+}
+
+QComboBox::down-arrow {
+    image: none;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #f8fafc;
+    margin: 4px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #1e293b; /* Rich Slate dropdown */
+    color: #f8fafc;
+    border: 1px solid #374151; /* Subtle border */
+    border-radius: 4px;
+    selection-background-color: #0ea5e9; /* Sky Blue selection */
+    selection-color: #ffffff;
+}
+
+/* =============================================================================
+   CHECKBOXES
+   ============================================================================= */
+
+QCheckBox {
+    color: #f8fafc;
+    spacing: 8px;
+}
+
+QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+    background-color: #1e293b; /* Rich Slate */
+    border: 1px solid #64748b; /* Standard border */
+    border-radius: 3px;
+}
+
+QCheckBox::indicator:hover {
+    background-color: #334155; /* Medium Slate hover */
+    border-color: #94a3b8; /* Emphasis border */
+}
+
+QCheckBox::indicator:checked {
+    background-color: #0ea5e9; /* Sky Blue checked */
+    border-color: #0284c7;
+    image: none;
+}
+
+QCheckBox::indicator:checked:hover {
+    background-color: #0284c7; /* Darker sky blue hover */
+}
+
+QCheckBox::indicator:disabled {
+    background-color: #0f172a; /* Deep Charcoal disabled */
+    border-color: #374151; /* Subtle border */
+}
+
+/* =============================================================================
+   RADIO BUTTONS
+   ============================================================================= */
+
+QRadioButton {
+    color: #f8fafc;
+    spacing: 8px;
+}
+
+QRadioButton::indicator {
+    width: 16px;
+    height: 16px;
+    background-color: #1e293b; /* Rich Slate */
+    border: 1px solid #64748b; /* Standard border */
+    border-radius: 8px;
+}
+
+QRadioButton::indicator:hover {
+    background-color: #334155; /* Medium Slate hover */
+    border-color: #94a3b8; /* Emphasis border */
+}
+
+QRadioButton::indicator:checked {
+    background-color: #0ea5e9; /* Sky Blue checked */
+    border-color: #0284c7;
+}
+
+QRadioButton::indicator:checked:hover {
+    background-color: #0284c7; /* Darker sky blue hover */
+}
+
+/* =============================================================================
+   SLIDERS
+   ============================================================================= */
+
+QSlider::groove:horizontal {
+    background-color: #1e293b; /* Rich Slate */
+    height: 6px;
+    border-radius: 3px;
+    border: 1px solid #374151; /* Subtle border */
+}
+
+QSlider::handle:horizontal {
+    background-color: #0ea5e9; /* Sky Blue handle */
+    border: 1px solid #0284c7;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    margin: -6px 0;
+}
+
+QSlider::handle:horizontal:hover {
+    background-color: #0284c7; /* Darker sky blue hover */
+}
+
+QSlider::groove:vertical {
+    background-color: #1e293b; /* Rich Slate */
+    width: 6px;
+    border-radius: 3px;
+    border: 1px solid #374151; /* Subtle border */
+}
+
+QSlider::handle:vertical {
+    background-color: #0ea5e9; /* Sky Blue handle */
+    border: 1px solid #0284c7;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    margin: 0 -6px;
+}
+
+QSlider::handle:vertical:hover {
+    background-color: #0284c7; /* Darker sky blue hover */
+}
+
+/* =============================================================================
+   PROGRESS BARS
+   ============================================================================= */
+
+QProgressBar {
+    background-color: #1e293b; /* Rich Slate */
+    color: #f8fafc;
+    border: 1px solid #64748b; /* Standard border */
+    border-radius: 4px;
+    text-align: center;
+    padding: 2px;
+}
+
+QProgressBar::chunk {
+    background-color: #0ea5e9; /* Sky Blue progress */
+    border-radius: 3px;
+}
+
+/* =============================================================================
+   TABS
+   ============================================================================= */
+
+QTabWidget::pane {
+    background-color: #334155; /* Medium Slate */
+    border: 1px solid #64748b; /* Standard border */
+    border-radius: 4px;
+}
+
+QTabWidget::tab-bar {
+    alignment: left;
+}
+
+QTabBar::tab {
+    background-color: #1e293b; /* Rich Slate */
+    color: #cbd5e1; /* Secondary Text */
+    border: 1px solid #374151; /* Subtle border */
+    border-bottom: none;
+    border-radius: 4px 4px 0px 0px;
+    padding: 6px 12px;
+    margin-right: 2px;
+}
+
+QTabBar::tab:hover {
+    background-color: #334155; /* Medium Slate hover */
+    color: #f8fafc; /* Primary Text */
+}
+
+QTabBar::tab:selected {
+    background-color: #334155; /* Medium Slate selected */
+    color: #f8fafc; /* Primary Text */
+    border-color: #64748b; /* Standard border */
+}
+
+QTabBar::tab:!selected {
+    margin-top: 2px;
+}
+
+/* =============================================================================
+   SCROLLBARS - Context Aware
+   ============================================================================= */
+
+/* Default scrollbars for dark backgrounds */
+QScrollBar:vertical {
+    background-color: rgba(148, 163, 184, 0.1); /* Subtle slate track */
+    width: 12px;
+    border-radius: 6px;
+    border: none;
+}
+
+QScrollBar::handle:vertical {
+    background-color: rgba(148, 163, 184, 0.4); /* Medium slate handle */
+    border-radius: 6px;
+    min-height: 20px;
+    margin: 0px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: rgba(148, 163, 184, 0.6); /* Enhanced slate hover */
+}
+
+QScrollBar:horizontal {
+    background-color: rgba(148, 163, 184, 0.1); /* Subtle slate track */
+    height: 12px;
+    border-radius: 6px;
+    border: none;
+}
+
+QScrollBar::handle:horizontal {
+    background-color: rgba(148, 163, 184, 0.4); /* Medium slate handle */
+    border-radius: 6px;
+    min-width: 20px;
+    margin: 0px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background-color: rgba(148, 163, 184, 0.6); /* Enhanced slate hover */
+}
+
+QScrollBar::add-line, QScrollBar::sub-line {
+    background: none;
+    border: none;
+}
+
+QScrollBar::add-page, QScrollBar::sub-page {
+    background: none;
+}
+
+/* =============================================================================
+   TREE VIEWS
+   ============================================================================= */
+
+QTreeView {
+    background-color: #334155; /* Medium Slate */
+    color: #f8fafc;
+    border: 1px solid #64748b; /* Standard border */
+    border-radius: 4px;
+    selection-background-color: #0ea5e9; /* Sky Blue selection */
+    selection-color: #ffffff;
+    alternate-background-color: #2d3748; /* Alternating row color */
+    show-decoration-selected: 1;
+}
+
+QTreeView::item {
+    padding: 2px;
+    border: none;
+}
+
+QTreeView::item:hover {
+    background-color: rgba(14, 165, 233, 0.2); /* Sky Blue hover with transparency */
+}
+
+QTreeView::item:selected {
+    background-color: #0ea5e9; /* Sky Blue selection */
+    color: #ffffff;
+}
+
+QTreeView::branch {
+    background-color: transparent;
+}
+
+QTreeView::branch:has-children:!has-siblings:closed,
+QTreeView::branch:closed:has-children:has-siblings {
+    border-image: none;
+    image: none;
+}
+
+QTreeView::branch:open:has-children:!has-siblings,
+QTreeView::branch:open:has-children:has-siblings {
+    border-image: none;
+    image: none;
+}
+
+/* =============================================================================
+   LIST VIEWS
+   ============================================================================= */
+
+QListView {
+    background-color: #334155; /* Medium Slate */
+    color: #f8fafc;
+    border: 1px solid #64748b; /* Standard border */
+    border-radius: 4px;
+    selection-background-color: #0ea5e9; /* Sky Blue selection */
+    selection-color: #ffffff;
+    alternate-background-color: #2d3748; /* Alternating row color */
+}
+
+QListView::item {
+    padding: 4px;
+    border: none;
+}
+
+QListView::item:hover {
+    background-color: rgba(14, 165, 233, 0.2); /* Sky Blue hover with transparency */
+}
+
+QListView::item:selected {
+    background-color: #0ea5e9; /* Sky Blue selection */
+    color: #ffffff;
+}
+
+/* =============================================================================
+   TABLE VIEWS
+   ============================================================================= */
+
+QTableView {
+    background-color: #334155; /* Medium Slate */
+    color: #f8fafc;
+    border: 1px solid #64748b; /* Standard border */
+    border-radius: 4px;
+    selection-background-color: #0ea5e9; /* Sky Blue selection */
+    selection-color: #ffffff;
+    alternate-background-color: #2d3748; /* Alternating row color */
+    gridline-color: #374151; /* Subtle grid lines */
+}
+
+QTableView::item {
+    padding: 4px;
+    border: none;
+}
+
+QTableView::item:hover {
+    background-color: rgba(14, 165, 233, 0.2); /* Sky Blue hover with transparency */
+}
+
+QTableView::item:selected {
+    background-color: #0ea5e9; /* Sky Blue selection */
+    color: #ffffff;
+}
+
+QHeaderView::section {
+    background-color: #1e293b; /* Rich Slate header */
+    color: #f8fafc;
+    border: 1px solid #374151; /* Subtle border */
+    padding: 4px 8px;
+}
+
+QHeaderView::section:hover {
+    background-color: #334155; /* Medium Slate hover */
+}
+
+/* =============================================================================
+   GROUP BOXES
+   ============================================================================= */
+
+QGroupBox {
+    color: #f8fafc;
+    border: 1px solid #64748b; /* Standard border */
+    border-radius: 4px;
+    margin-top: 8px;
+    padding-top: 8px;
+    font-weight: bold;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    left: 8px;
+    padding: 0 4px;
+    background-color: #334155; /* Medium Slate title background */
+    border-radius: 2px;
+}
+
+/* =============================================================================
+   DOCK WIDGETS
+   ============================================================================= */
+
+QDockWidget {
+    background-color: #334155; /* Medium Slate */
+    color: #f8fafc;
+    border: 1px solid #64748b; /* Standard border */
+    border-radius: 4px;
+}
+
+QDockWidget::title {
+    background-color: #1e293b; /* Rich Slate title */
+    color: #f8fafc;
+    padding: 4px 8px;
+    border-radius: 4px 4px 0px 0px;
+    text-align: left;
+}
+
+QDockWidget::close-button, QDockWidget::float-button {
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    padding: 2px;
+}
+
+QDockWidget::close-button:hover, QDockWidget::float-button:hover {
+    background-color: #dc2626; /* Crimson hover for close */
+    border-color: #b91c1c;
+}
+
+/* =============================================================================
+   STATUS BAR
+   ============================================================================= */
+
+QStatusBar {
+    background-color: #1e293b; /* Rich Slate */
+    color: #f8fafc;
+    border-top: 1px solid #374151; /* Subtle top border */
+}
+
+QStatusBar::item {
+    border: none;
+}
+
+QStatusBar QLabel {
+    color: #f8fafc;
+    padding: 2px 4px;
+}
+
+/* =============================================================================
+   TOOLTIPS
+   ============================================================================= */
+
+QToolTip {
+    background-color: #0f172a; /* Deep Charcoal */
+    color: #f8fafc;
+    border: 1px solid #64748b; /* Standard border */
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+/* =============================================================================
+   SPLITTERS
+   ============================================================================= */
+
+QSplitter::handle {
+    background-color: #374151; /* Subtle handle */
+    border: 1px solid #64748b; /* Standard border */
+}
+
+QSplitter::handle:horizontal {
+    width: 3px;
+    margin: 2px 0px;
+}
+
+QSplitter::handle:vertical {
+    height: 3px;
+    margin: 0px 2px;
+}
+
+QSplitter::handle:hover {
+    background-color: #0ea5e9; /* Sky Blue hover */
+}
+
+/* =============================================================================
+   FREECAD SPECIFIC COMPONENTS
+   ============================================================================= */
+
+/* Property Editor */
+Gui--PropertyEditor--PropertyEditor {
+    background-color: #334155; /* Medium Slate */
+    color: #f8fafc;
+    border: 1px solid #64748b; /* Standard border */
+    selection-background-color: #0ea5e9; /* Sky Blue selection */
+    selection-color: #ffffff;
+    alternate-background-color: #2d3748; /* Alternating rows */
+}
+
+/* Task Panel */
+Gui--TaskView--TaskView {
+    background-color: #334155; /* Medium Slate */
+    color: #f8fafc;
+    border: 1px solid #64748b; /* Standard border */
+}
+
+/* 3D View */
+Gui--View3DInventor {
+    background-color: #ffffff; /* White 3D viewport - preserved for CAD work */
+    border: 1px solid #64748b; /* Standard border */
+}
+
+/* Report View */
+Gui--ReportView {
+    background-color: #334155; /* Medium Slate */
+    color: #f8fafc;
+    border: 1px solid #64748b; /* Standard border */
+    selection-background-color: #0ea5e9; /* Sky Blue selection */
+    selection-color: #ffffff;
+}
+
+/* Python Console */
+Gui--PythonConsole {
+    background-color: #0f172a; /* Deep Charcoal for console */
+    color: #f8fafc;
+    border: 1px solid #64748b; /* Standard border */
+    font-family: "Consolas", "Monaco", "Courier New", monospace;
+    selection-background-color: #0ea5e9; /* Sky Blue selection */
+    selection-color: #ffffff;
+}
