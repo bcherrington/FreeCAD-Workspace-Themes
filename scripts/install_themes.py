@@ -51,36 +51,59 @@ def install_theme(theme_name, source_dir, target_dir, dry_run=False):
         print(f"❌ Theme '{theme_name}' not found in source directory")
         return False
 
-    # Create target directory
+    # Create target directories
     target_theme_dir = target_dir / theme_name
+    target_overlay_dir = target_theme_dir / 'overlay'
 
-    # Define all theme files that should be copied
-    theme_files = [
+    # Define main theme files
+    main_files = [
         f'{theme_name}.cfg',
-        f'{theme_name}.qss',
+        f'{theme_name}.qss'
+    ]
+
+    # Define overlay files
+    overlay_files = [
         f'{theme_name} Overlay.qss'
     ]
 
     if dry_run:
         print(f"📁 Would create directory: {target_theme_dir}")
-        for file_name in theme_files:
+        print(f"📁 Would create directory: {target_overlay_dir}")
+
+        for file_name in main_files:
             source_file = theme_source / file_name
             if source_file.exists():
                 print(f"📄 Would copy: {source_file} → {target_theme_dir}")
+
+        for file_name in overlay_files:
+            source_file = theme_source / 'overlay' / file_name
+            if source_file.exists():
+                print(f"📄 Would copy: {source_file} → {target_overlay_dir}")
+
         return True
 
     try:
-        # Create target directory
+        # Create target directories
         target_theme_dir.mkdir(parents=True, exist_ok=True)
+        target_overlay_dir.mkdir(parents=True, exist_ok=True)
 
-        # Copy all theme files
-        for file_name in theme_files:
+        # Copy main theme files
+        for file_name in main_files:
             source_file = theme_source / file_name
             if source_file.exists():
                 shutil.copy2(source_file, target_theme_dir)
                 print(f"✅ Copied: {file_name}")
             else:
                 print(f"⚠️  Warning: {file_name} not found")
+
+        # Copy overlay files
+        for file_name in overlay_files:
+            source_file = theme_source / 'overlay' / file_name
+            if source_file.exists():
+                shutil.copy2(source_file, target_overlay_dir)
+                print(f"✅ Copied: overlay/{file_name}")
+            else:
+                print(f"⚠️  Warning: overlay/{file_name} not found")
 
         return True
 
